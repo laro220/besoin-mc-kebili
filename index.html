@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Besoin Maison Culture — Kébili</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f5f2eb;
+  --surface:#fff;
+  --surface2:#faf8f4;
+  --border:#e2ddd4;
+  --primary:#2c5f6e;
+  --primary-dark:#1a3d49;
+  --primary-light:#eaf3f5;
+  --accent:#c4872a;
+  --accent-light:#fdf3e3;
+  --danger:#c0392b;
+  --success:#27ae60;
+  --text:#1a1a1a;
+  --text2:#5a5a5a;
+  --text3:#9a9a9a;
+  --shadow:0 2px 16px rgba(44,95,110,0.10);
+  --shadow-lg:0 8px 40px rgba(44,95,110,0.14);
+  --radius:12px;
+  --font-display:'Playfair Display',serif;
+  --font:'Cairo',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--font);color:var(--text);min-height:100vh}
+button{cursor:pointer;font-family:var(--font)}
+input,select{font-family:var(--font)}
+
+/* ═══ SCREENS ═══ */
+.screen{display:none;min-height:100vh}
+.screen.active{display:flex;flex-direction:column}
+
+/* ═══ LOGIN ═══ */
+#s-login{
+  align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#3a7a8c 100%);
+  position:relative;overflow:hidden;
+}
+#s-login::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40v0%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+.login-card{
+  background:rgba(255,255,255,0.97);
+  border-radius:20px;
+  padding:48px 52px;
+  width:100%;max-width:480px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  position:relative;z-index:1;
+  animation:slideUp .5s ease;
+}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo .logo-icon{
+  width:72px;height:72px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:18px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:32px;margin-bottom:14px;
+  box-shadow:0 6px 20px rgba(44,95,110,0.3);
+}
+.login-logo h1{
+  font-family:var(--font-display);
+  font-size:22px;color:var(--primary-dark);
+  line-height:1.3;
+}
+.login-logo p{font-size:13px;color:var(--text3);margin-top:4px}
+.login-section{margin-bottom:20px}
+.login-section label{
+  display:block;font-size:13px;font-weight:600;
+  color:var(--text2);margin-bottom:8px;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.login-section select,.login-section input{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-size:15px;color:var(--text);background:var(--surface2);
+  transition:border-color .2s,box-shadow .2s;outline:none;
+}
+.login-section select:focus,.login-section input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(44,95,110,0.12);
+}
+.login-section input[type=password]{letter-spacing:.1em}
+.btn-login{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;border:none;border-radius:10px;
+  font-size:16px;font-weight:700;letter-spacing:.03em;
+  box-shadow:0 4px 16px rgba(44,95,110,0.3);
+  transition:transform .15s,box-shadow .15s;margin-top:8px;
+}
+.btn-login:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(44,95,110,0.4)}
+.btn-login:active{transform:translateY(0)}
+.login-hint{text-align:center;margin-top:18px;font-size:12px;color:var(--text3)}
+.login-hint span{color:var(--accent);font-weight:600}
+
+/* ═══ TOPBAR ═══ */
+.topbar{
+  background:linear-gradient(90deg,var(--primary-dark),var(--primary));
+  color:#fff;padding:0 32px;height:68px;
+  display:flex;align-items:center;gap:16px;
+  position:sticky;top:0;z-index:50;
+  box-shadow:0 2px 16px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  width:40px;height:40px;
+  background:rgba(255,255,255,0.15);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+}
+.topbar-info{flex:1}
+.topbar-title{font-family:var(--font-display);font-size:17px;font-weight:600}
+.topbar-sub{font-size:12px;opacity:.7;margin-top:1px}
+.topbar-user{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.12);
+  border-radius:24px;padding:6px 16px 6px 10px;
+  font-size:13px;
+}
+.topbar-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;font-size:15px;
+}
+.btn-logout{
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
+  color:#fff;border-radius:8px;padding:6px 14px;
+  font-size:13px;font-weight:600;transition:background .2s;
+}
+.btn-logout:hover{background:rgba(255,255,255,0.25)}
+
+/* ═══ TABS ═══ */
+.tabs{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  display:flex;padding:0 32px;gap:4px;
+}
+.tab{
+  padding:14px 22px;font-size:14px;font-weight:600;
+  border:none;background:none;color:var(--text2);
+  border-bottom:2px solid transparent;
+  transition:all .2s;position:relative;top:1px;
+}
+.tab:hover{color:var(--primary)}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+
+/* ═══ CONTENT ═══ */
+.content{flex:1;padding:32px;max-width:1100px;width:100%;margin:0 auto}
+
+/* Cards */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;margin-bottom:24px;
+}
+.card-header{
+  padding:20px 24px;border-bottom:1px solid var(--border);
+  background:var(--surface2);
+  display:flex;align-items:center;gap:12px;
+}
+.card-header h2{font-size:16px;font-weight:700;color:var(--primary-dark);flex:1}
+.card-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--primary-light);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.card-body{padding:24px}
+
+/* Form Row */
+.form-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.form-group{flex:1;min-width:180px}
+.form-group label{
+  display:block;font-size:12px;font-weight:700;
+  color:var(--text2);margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.form-group input,.form-group select{
+  width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:8px;
+  font-size:14px;color:var(--text);background:var(--surface2);
+  transition:border-color .2s,box-shadow .2s;outline:none;
+}
+.form-group input:focus,.form-group select:focus{
+  border-color:var(--primary);box-shadow:0 0 0 3px rgba(44,95,110,0.1);
+}
+
+/* Buttons */
+.btn{
+  padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;
+  border:none;transition:all .15s;display:inline-flex;align-items:center;gap:7px;
+}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(44,95,110,0.2)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(196,135,42,0.2)}
+.btn-accent:hover{background:#a97020}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{background:#962d22}
+.btn-ghost{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--surface2);color:var(--text)}
+.btn-sm{padding:7px 14px;font-size:13px}
+.btn-success{background:var(--success);color:#fff}
+
+/* Tables */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{
+  background:var(--primary-light);color:var(--primary-dark);
+  font-size:12px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;padding:11px 16px;text-align:left;
+  border-bottom:2px solid var(--border);white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:hover{background:var(--surface2)}
+tbody td{padding:11px 16px;color:var(--text)}
+tbody td:last-child{white-space:nowrap}
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;
+}
+.badge-primary{background:var(--primary-light);color:var(--primary)}
+.badge-accent{background:var(--accent-light);color:var(--accent)}
+.badge-success{background:#e8f5e9;color:var(--success)}
+.badge-warning{background:#fff8e1;color:#e67e22}
+
+/* Alert */
+.alert{
+  padding:12px 18px;border-radius:8px;font-size:14px;
+  margin-bottom:16px;display:flex;align-items:center;gap:10px;
+  animation:slideUp .3s ease;
+}
+.alert-success{background:#e8f5e9;color:#1a5c2a;border:1px solid #a5d6a7}
+.alert-danger{background:#fde8e6;color:#7f1d1d;border:1px solid #f5a9a3}
+
+/* Empty */
+.empty{
+  text-align:center;padding:48px 24px;color:var(--text3);
+}
+.empty-icon{font-size:48px;margin-bottom:12px;opacity:.4}
+.empty p{font-size:14px}
+
+/* Stat cards */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+  box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;
+}
+.stat-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  flex-shrink:0;
+}
+.stat-label{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
+.stat-value{font-size:26px;font-weight:700;color:var(--primary-dark);font-family:var(--font-display)}
+
+/* MC Selection */
+.mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:24px}
+.mc-btn{
+  padding:28px 20px;border-radius:14px;
+  border:2px solid var(--border);background:var(--surface);
+  text-align:center;transition:all .2s;cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.mc-btn:hover{border-color:var(--primary);background:var(--primary-light);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.mc-btn .mc-icon{font-size:36px;margin-bottom:12px}
+.mc-btn .mc-name{font-size:15px;font-weight:700;color:var(--primary-dark)}
+.mc-btn .mc-city{font-size:12px;color:var(--text3);margin-top:3px}
+
+/* Print */
+@media print{
+  body *{visibility:hidden !important}
+  #print-area,#print-area *{visibility:visible !important}
+  #print-area{
+    position:fixed;inset:0;background:#fff;
+    padding:24px;z-index:9999;
+    visibility:visible !important;
+  }
+  .no-print{display:none !important}
+}
+.print-header{
+  display:none;
+  border-bottom:2px solid var(--primary);
+  padding-bottom:16px;margin-bottom:20px;
+}
+@media print{
+  .print-header{display:flex !important;align-items:center;gap:16px}
+}
+.print-header .print-logo{font-size:28px}
+.print-header .print-title h1{font-size:18px;color:var(--primary-dark);font-family:var(--font-display)}
+.print-header .print-title p{font-size:12px;color:var(--text2)}
+
+/* Quantity control */
+.qty-ctrl{display:flex;align-items:center;gap:8px}
+.qty-btn{
+  width:28px;height:28px;border-radius:6px;border:1.5px solid var(--border);
+  background:var(--surface2);font-size:16px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
+  color:var(--primary);padding:0;
+}
+.qty-btn:hover{background:var(--primary-light);border-color:var(--primary)}
+.qty-input{
+  width:56px;text-align:center;padding:5px 8px;
+  border:1.5px solid var(--border);border-radius:6px;font-size:14px;
+  font-weight:600;outline:none;
+}
+.qty-input:focus{border-color:var(--primary)}
+
+/* Checkbox list */
+.article-list-check{display:flex;flex-direction:column;gap:10px}
+.article-check-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;border:1.5px solid var(--border);border-radius:10px;
+  background:var(--surface);transition:all .15s;cursor:pointer;
+}
+.article-check-item:hover{border-color:var(--primary);background:var(--primary-light)}
+.article-check-item.selected{border-color:var(--primary);background:var(--primary-light)}
+.article-check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
+.article-check-name{flex:1;font-size:14px;font-weight:600;color:var(--text)}
+.article-check-meta{display:flex;gap:8px;flex-wrap:wrap}
+.article-check-qty,.article-check-qual{display:flex;align-items:center;gap:6px}
+
+/* Demand summary MC */
+.demand-total-bar{
+  background:var(--primary-light);border:1px solid var(--primary);
+  border-radius:10px;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:16px;
+}
+.demand-total-bar span{font-size:14px;color:var(--primary-dark);font-weight:600}
+.demand-total-bar strong{font-size:18px;color:var(--primary)}
+
+/* Animations */
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.fade-in{animation:fadeIn .3s ease}
+
+/* Responsive */
+@media(max-width:640px){
+  .topbar{padding:0 16px;height:60px}
+  .content{padding:16px}
+  .tabs{padding:0 16px}
+  .form-row{flex-direction:column}
+  .form-group{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ LOGIN SCREEN ═══════════════════ -->
+<div class="screen active" id="s-login">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-icon">🏛️</div>
+      <h1>Besoin Maison Culture<br/>Gouvernorat de Kébili</h1>
+      <p>Commissariat Régional des Affaires Culturelles</p>
+    </div>
+    <div id="login-alert"></div>
+    <div class="login-section">
+      <label>Connexion en tant que</label>
+      <select id="login-role" onchange="onRoleChange()">
+        <option value="">— Choisir le rôle —</option>
+        <option value="admin">👨‍💼 Administrateur CRAC</option>
+        <option value="mc">🏛️ Agent Maison de Culture</option>
+      </select>
+    </div>
+    <div class="login-section" id="mc-select-wrap" style="display:none">
+      <label>Maison de Culture</label>
+      <select id="login-mc">
+        <option value="">— Sélectionner —</option>
+        <option value="MC Kébili">🏛️ MC Kébili</option>
+        <option value="MC Douz">🏛️ MC Douz</option>
+        <option value="MC Souk Lahad">🏛️ MC Souk Lahad</option>
+        <option value="MC Faouar">🏛️ MC Faouar</option>
+      </select>
+    </div>
+    <div class="login-section">
+      <label>Mot de passe</label>
+      <input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="btn-login" onclick="doLogin()">Se connecter</button>
+    <div class="login-hint">Demo : mot de passe <span>crac2024</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADMIN SCREEN ═══════════════════ -->
+<div class="screen" id="s-admin">
+  <div class="topbar">
+    <div class="topbar-logo">🏛️</div>
+    <div class="topbar-info">
+      <div class="topbar-title">CRAC Kébili — Administration</div>
+      <div class="topbar-sub">Commissariat Régional des Affaires Culturelles</div>
+    </div>
+    <div class="topbar-user">
+      <div class="topbar-avatar">👨‍💼</div>
+      <span>Administrateur</span>
+    </div>
+    <button class="btn-logout" onclick="logout()">Déconnexion</button>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="adminTab('articles',this)">📦 Gestion des Articles</button>
+    <button class="tab" onclick="adminTab('demandes',this)">📋 Demandes MC</button>
+    <button class="tab" onclick="adminTab('synthese',this)">📊 Synthèse & Impression</button>
+  </div>
+
+  <div class="content">
+
+    <!-- TAB: Articles -->
+    <div id="admin-tab-articles" class="fade-in">
+      <div id="admin-alert"></div>
+
+      <!-- Stats -->
+      <div class="stats" id="admin-stats"></div>
+
+      <!-- Add article -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">➕</div>
+          <h2>Ajouter un Article</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group" style="flex:2">
+              <label>Désignation de l'article *</label>
+              <input type="text" id="art-name" placeholder="Ex: Tables, Chaises, Microphones…"/>
+            </div>
+            <div class="form-group">
+              <label>Catégorie</label>
+              <select id="art-cat">
+                <option value="Mobilier">🪑 Mobilier</option>
+                <option value="Équipement">🔧 Équipement</option>
+                <option value="Fournitures">📦 Fournitures</option>
+                <option value="Numérique">💻 Numérique</option>
+                <option value="Sonorisation">🎤 Sonorisation</option>
+                <option value="Autre">📌 Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Unité de mesure</label>
+              <input type="text" id="art-unit" placeholder="Ex: Pièce, Lot, Kg…"/>
+            </div>
+            <div class="form-group" style="flex:2">
+              <label>Description (facultatif)</label>
+              <input type="text" id="art-desc" placeholder="Description ou spécification…"/>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addArticle()">➕ Ajouter l'article</button>
+        </div>
+      </div>
+
+      <!-- Articles list -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📦</div>
+          <h2>Liste des Articles Disponibles</h2>
+          <input type="text" id="art-search" placeholder="🔍 Rechercher…"
+            style="padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;width:200px;outline:none"
+            oninput="renderArticlesAdmin()"/>
+        </div>
+        <div class="card-body" style="padding:0">
+          <div class="table-wrap">
+            <table>
+              <thead><tr>
+                <th>#</th><th>Désignation</th><th>Catégorie</th>
+                <th>Unité</th><th>Description</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="admin-art-tbody"></tbody>
+            </table>
+          </div>
+          <div id="admin-art-empty" class="empty" style="display:none">
+            <div class="empty-icon">📦</div><p>Aucun article ajouté</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Demandes -->
+    <div id="admin-tab-demandes" style="display:none" class="fade-in">
+      <div class="stats" id="dem-stats"></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📋</div>
+          <h2>Demandes des Maisons de Culture</h2>
+          <select id="dem-filter" onchange="renderDemandes()" style="padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none">
+            <option value="">Toutes les MC</option>
+            <option value="MC Kébili">MC Kébili</option>
+            <option value="MC Douz">MC Douz</option>
+            <option value="MC Souk Lahad">MC Souk Lahad</option>
+            <option value="MC Faouar">MC Faouar</option>
+          </select>
+        </div>
+        <div class="card-body" style="padding:0">
+          <div class="table-wrap">
+            <table>
+              <thead><tr>
+                <th>#</th><th>Maison de Culture</th><th>Article</th>
+                <th>Quantité</th><th>Qualité</th><th>Date</th><th>Statut</th>
+              </tr></thead>
+              <tbody id="admin-dem-tbody"></tbody>
+            </table>
+          </div>
+          <div id="admin-dem-empty" class="empty" style="display:none">
+            <div class="empty-icon">📭</div><p>Aucune demande reçue</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Synthèse -->
+    <div id="admin-tab-synthese" style="display:none" class="fade-in">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+        <div>
+          <h2 style="font-family:var(--font-display);font-size:20px;color:var(--primary-dark)">Tableau Récapitulatif des Besoins</h2>
+          <p style="font-size:13px;color:var(--text2);margin-top:4px">Toutes les demandes regroupées par article</p>
+        </div>
+        <button class="btn btn-accent" onclick="printSynthese()">🖨️ Imprimer la liste</button>
+      </div>
+
+      <div id="print-area">
+        <div class="print-header">
+          <div class="print-logo">🏛️</div>
+          <div class="print-title">
+            <h1>Commissariat Régional des Affaires Culturelles — Kébili</h1>
+            <p>Tableau récapitulatif des besoins des Maisons de Culture · Imprimé le <span id="print-date"></span></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📊</div>
+            <h2>Récapitulatif Global des Demandes</h2>
+          </div>
+          <div class="card-body" style="padding:0">
+            <div class="table-wrap">
+              <table id="synthese-table">
+                <thead><tr>
+                  <th>#</th>
+                  <th>Article</th>
+                  <th>Catégorie</th>
+                  <th>MC Kébili</th>
+                  <th>MC Douz</th>
+                  <th>MC Souk Lahad</th>
+                  <th>MC Faouar</th>
+                  <th>Quantité Totale</th>
+                  <th>Qualité demandée</th>
+                </tr></thead>
+                <tbody id="synthese-tbody"></tbody>
+              </table>
+            </div>
+            <div id="synthese-empty" class="empty" style="display:none">
+              <div class="empty-icon">📊</div><p>Aucune demande à synthétiser</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ AGENT MC SCREEN ═══════════════════ -->
+<div class="screen" id="s-mc">
+  <div class="topbar">
+    <div class="topbar-logo">🏛️</div>
+    <div class="topbar-info">
+      <div class="topbar-title" id="mc-topbar-title">Maison de Culture</div>
+      <div class="topbar-sub">CRAC Kébili — Formulaire de Demande</div>
+    </div>
+    <div class="topbar-user">
+      <div class="topbar-avatar">👤</div>
+      <span id="mc-topbar-name"></span>
+    </div>
+    <button class="btn-logout" onclick="logout()">Déconnexion</button>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="mcTab('demande',this)">📝 Nouvelle Demande</button>
+    <button class="tab" onclick="mcTab('historique',this)">📋 Mes Demandes</button>
+  </div>
+
+  <div class="content">
+
+    <!-- TAB: Nouvelle Demande -->
+    <div id="mc-tab-demande" class="fade-in">
+      <div id="mc-alert"></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📝</div>
+          <h2>Sélectionner les Articles à Demander</h2>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px">
+            Cochez les articles dont vous avez besoin, indiquez la quantité et la qualité souhaitée.
+          </p>
+          <div class="article-list-check" id="mc-art-list">
+            <div class="empty"><div class="empty-icon">⏳</div><p>Chargement des articles…</p></div>
+          </div>
+
+          <div id="mc-demand-preview" style="display:none;margin-top:20px">
+            <div class="demand-total-bar">
+              <span>Articles sélectionnés :</span>
+              <strong id="mc-selected-count">0 article(s)</strong>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
+              <button class="btn btn-ghost" onclick="resetDemande()">✖ Réinitialiser</button>
+              <button class="btn btn-success" onclick="submitDemande()">✅ Valider et Envoyer la Demande</button>
+            </div>
+          </div>
+
+          <div id="mc-no-articles" class="empty" style="display:none">
+            <div class="empty-icon">📭</div>
+            <p>Aucun article disponible.<br/>Veuillez attendre que l'administrateur ajoute des articles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Historique -->
+    <div id="mc-tab-historique" style="display:none" class="fade-in">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📋</div>
+          <h2 id="mc-hist-title">Mes Demandes</h2>
+        </div>
+        <div class="card-body" style="padding:0">
+          <div class="table-wrap">
+            <table>
+              <thead><tr>
+                <th>#</th><th>Article</th><th>Quantité</th>
+                <th>Qualité</th><th>Date d'envoi</th><th>Statut</th>
+              </tr></thead>
+              <tbody id="mc-hist-tbody"></tbody>
+            </table>
+          </div>
+          <div id="mc-hist-empty" class="empty" style="display:none">
+            <div class="empty-icon">📭</div><p>Aucune demande envoyée</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════
+//  DATA STORE
+// ════════════════════════════════════════
+const MCS = ['MC Kébili','MC Douz','MC Souk Lahad','MC Faouar'];
+const PASS = 'crac2024';
+
+let state = {
+  role: null,
+  mc: null,
+  articles: JSON.parse(localStorage.getItem('crac_articles') || '[]'),
+  demandes: JSON.parse(localStorage.getItem('crac_demandes') || '[]'),
+};
+
+function save(){
+  localStorage.setItem('crac_articles', JSON.stringify(state.articles));
+  localStorage.setItem('crac_demandes', JSON.stringify(state.demandes));
+}
+
+// ════════════════════════════════════════
+//  AUTH
+// ════════════════════════════════════════
+function onRoleChange(){
+  const r = document.getElementById('login-role').value;
+  document.getElementById('mc-select-wrap').style.display = r==='mc' ? '' : 'none';
+}
+
+function doLogin(){
+  const role = document.getElementById('login-role').value;
+  const pass = document.getElementById('login-pass').value;
+  const mc   = document.getElementById('login-mc')?.value;
+  const al   = document.getElementById('login-alert');
+  al.innerHTML = '';
+
+  if(!role){ al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez sélectionner un rôle.</div>'; return; }
+  if(role==='mc' && !mc){ al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez choisir une Maison de Culture.</div>'; return; }
+  if(pass !== PASS){ al.innerHTML='<div class="alert alert-danger">🔒 Mot de passe incorrect.</div>'; return; }
+
+  state.role = role;
+  state.mc   = mc || null;
+
+  show(role==='admin' ? 's-admin' : 's-mc');
+  if(role==='admin') initAdmin();
+  else initMC();
+}
+
+function logout(){
+  state.role=null; state.mc=null;
+  show('s-login');
+  document.getElementById('login-pass').value='';
+  document.getElementById('login-role').value='';
+  document.getElementById('mc-select-wrap').style.display='none';
+  document.getElementById('login-alert').innerHTML='';
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ════════════════════════════════════════
+//  ADMIN — INIT
+// ════════════════════════════════════════
+function initAdmin(){
+  adminTab('articles', document.querySelector('#s-admin .tab'));
+  renderArticlesAdmin();
+  renderAdminStats();
+}
+
+function adminTab(name, el){
+  document.querySelectorAll('#s-admin .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['articles','demandes','synthese'].forEach(t=>{
+    document.getElementById('admin-tab-'+t).style.display = t===name ? '' : 'none';
+  });
+  if(name==='articles'){ renderArticlesAdmin(); renderAdminStats(); }
+  if(name==='demandes'){ renderDemandes(); renderDemStats(); }
+  if(name==='synthese'){ renderSynthese(); }
+}
+
+// ─── Articles Admin ───
+function addArticle(){
+  const name = document.getElementById('art-name').value.trim();
+  const cat  = document.getElementById('art-cat').value;
+  const unit = document.getElementById('art-unit').value.trim() || 'Pièce';
+  const desc = document.getElementById('art-desc').value.trim();
+  const al   = document.getElementById('admin-alert');
+  if(!name){ al.innerHTML='<div class="alert alert-danger">⚠️ La désignation est obligatoire.</div>'; setTimeout(()=>al.innerHTML='',3000); return; }
+  if(state.articles.find(a=>a.name.toLowerCase()===name.toLowerCase())){
+    al.innerHTML='<div class="alert alert-danger">⚠️ Cet article existe déjà.</div>'; setTimeout(()=>al.innerHTML='',3000); return;
+  }
+  state.articles.push({ id: Date.now(), name, cat, unit, desc });
+  save();
+  document.getElementById('art-name').value='';
+  document.getElementById('art-unit').value='';
+  document.getElementById('art-desc').value='';
+  al.innerHTML='<div class="alert alert-success">✅ Article ajouté avec succès.</div>';
+  setTimeout(()=>al.innerHTML='',3000);
+  renderArticlesAdmin();
+  renderAdminStats();
+}
+
+function deleteArticle(id){
+  if(!confirm('Supprimer cet article ?')) return;
+  state.articles = state.articles.filter(a=>a.id!==id);
+  save(); renderArticlesAdmin(); renderAdminStats();
+}
+
+function renderArticlesAdmin(){
+  const q = (document.getElementById('art-search')?.value||'').toLowerCase();
+  const arts = state.articles.filter(a=>!q||a.name.toLowerCase().includes(q)||a.cat.toLowerCase().includes(q));
+  const tbody = document.getElementById('admin-art-tbody');
+  const empty = document.getElementById('admin-art-empty');
+  if(!arts.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  empty.style.display='none';
+  const catIcon={'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤','Autre':'📌'};
+  tbody.innerHTML = arts.map((a,i)=>`
+    <tr>
+      <td><span style="font-size:12px;color:var(--text3)">${i+1}</span></td>
+      <td><strong>${a.name}</strong></td>
+      <td><span class="badge badge-primary">${catIcon[a.cat]||'📌'} ${a.cat}</span></td>
+      <td>${a.unit}</td>
+      <td style="color:var(--text2);font-size:13px">${a.desc||'—'}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteArticle(${a.id})">🗑️ Supprimer</button>
+      </td>
+    </tr>`).join('');
+}
+
+function renderAdminStats(){
+  const total = state.articles.length;
+  const totalDem = state.demandes.length;
+  const mcsWithDem = [...new Set(state.demandes.map(d=>d.mc))].length;
+  document.getElementById('admin-stats').innerHTML = `
+    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📦</div><div><div class="stat-label">Articles disponibles</div><div class="stat-value">${total}</div></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#fdf3e3">📋</div><div><div class="stat-label">Demandes reçues</div><div class="stat-value">${totalDem}</div></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#e8f5e9">🏛️</div><div><div class="stat-label">MC ayant soumis</div><div class="stat-value">${mcsWithDem}/4</div></div></div>
+  `;
+}
+
+// ─── Demandes Admin ───
+function renderDemandes(){
+  const filter = document.getElementById('dem-filter')?.value||'';
+  const dems = state.demandes.filter(d=>!filter||d.mc===filter);
+  const tbody = document.getElementById('admin-dem-tbody');
+  const empty = document.getElementById('admin-dem-empty');
+  if(!dems.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  empty.style.display='none';
+  const mcBadge={'MC Kébili':'badge-primary','MC Douz':'badge-accent','MC Souk Lahad':'badge-success','MC Faouar':'badge-warning'};
+  tbody.innerHTML = dems.map((d,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td><span class="badge ${mcBadge[d.mc]||'badge-primary'}">🏛️ ${d.mc}</span></td>
+      <td><strong>${d.article}</strong></td>
+      <td><strong>${d.qty}</strong> ${d.unit||''}</td>
+      <td>${qualBadge(d.qual)}</td>
+      <td style="font-size:12px;color:var(--text3)">${fmtDate(d.ts)}</td>
+      <td><span class="badge badge-success">✅ Reçue</span></td>
+    </tr>`).join('');
+}
+
+function renderDemStats(){
+  const total = state.demandes.length;
+  const byMC = {};
+  MCS.forEach(m=>{ byMC[m]=state.demandes.filter(d=>d.mc===m).length; });
+  document.getElementById('dem-stats').innerHTML = `
+    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📋</div><div><div class="stat-label">Total demandes</div><div class="stat-value">${total}</div></div></div>
+    ${MCS.map(m=>`<div class="stat-card"><div class="stat-icon" style="background:#fdf3e3">🏛️</div><div><div class="stat-label">${m}</div><div class="stat-value">${byMC[m]}</div></div></div>`).join('')}
+  `;
+}
+
+// ─── Synthèse ───
+function renderSynthese(){
+  document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+  // Group by article
+  const map = {};
+  state.demandes.forEach(d=>{
+    if(!map[d.article]) map[d.article]={article:d.article, cat:d.cat||'—', unit:d.unit||'', byMC:{}, quals:[]};
+    map[d.article].byMC[d.mc] = (map[d.article].byMC[d.mc]||0)+Number(d.qty);
+    if(d.qual && !map[d.article].quals.includes(d.qual)) map[d.article].quals.push(d.qual);
+  });
+  const rows = Object.values(map);
+  const tbody = document.getElementById('synthese-tbody');
+  const empty = document.getElementById('synthese-empty');
+  if(!rows.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  empty.style.display='none';
+  const catIcon={'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤','Autre':'📌'};
+  tbody.innerHTML = rows.map((r,i)=>{
+    const total = MCS.reduce((s,m)=>s+(r.byMC[m]||0),0);
+    const quals = r.quals.join(', ')||'—';
+    return `<tr>
+      <td>${i+1}</td>
+      <td><strong>${r.article}</strong></td>
+      <td><span class="badge badge-primary">${catIcon[r.cat]||'📌'} ${r.cat}</span></td>
+      ${MCS.map(m=>`<td style="text-align:center">${r.byMC[m]?`<strong>${r.byMC[m]}</strong> ${r.unit}`:'—'}</td>`).join('')}
+      <td style="text-align:center"><strong style="color:var(--primary)">${total} ${r.unit}</strong></td>
+      <td>${quals}</td>
+    </tr>`;
+  }).join('');
+}
+
+function printSynthese(){
+  renderSynthese();
+  window.print();
+}
+
+// ════════════════════════════════════════
+//  AGENT MC — INIT
+// ════════════════════════════════════════
+function initMC(){
+  document.getElementById('mc-topbar-title').textContent = state.mc;
+  document.getElementById('mc-topbar-name').textContent = 'Agent — '+state.mc;
+  document.getElementById('mc-hist-title').textContent = 'Mes Demandes — '+state.mc;
+  mcTab('demande', document.querySelector('#s-mc .tab'));
+  renderMCArtList();
+}
+
+function mcTab(name, el){
+  document.querySelectorAll('#s-mc .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['demande','historique'].forEach(t=>{
+    document.getElementById('mc-tab-'+t).style.display = t===name ? '' : 'none';
+  });
+  if(name==='demande') renderMCArtList();
+  if(name==='historique') renderMCHist();
+}
+
+function renderMCArtList(){
+  const container = document.getElementById('mc-art-list');
+  const noArt = document.getElementById('mc-no-articles');
+  const preview = document.getElementById('mc-demand-preview');
+  if(!state.articles.length){
+    container.innerHTML=''; noArt.style.display=''; preview.style.display='none'; return;
+  }
+  noArt.style.display='none';
+  const qualOpts = ['Très bonne','Bonne','Standard','Économique'].map(q=>`<option value="${q}">${q}</option>`).join('');
+  container.innerHTML = state.articles.map(a=>`
+    <div class="article-check-item" id="wrap-${a.id}" onclick="toggleArt(${a.id},event)">
+      <input type="checkbox" id="chk-${a.id}" onclick="event.stopPropagation();toggleArt(${a.id},event)" />
+      <div style="font-size:22px">${{'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤'}[a.cat]||'📌'}</div>
+      <div class="article-check-name">${a.name}<br/><span style="font-size:12px;color:var(--text3)">${a.cat} · ${a.unit}</span></div>
+      <div class="article-check-meta" onclick="event.stopPropagation()">
+        <div class="article-check-qty">
+          <span style="font-size:12px;color:var(--text2);font-weight:700">Qté</span>
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="chgQty(${a.id},-1)">−</button>
+            <input class="qty-input" type="number" id="qty-${a.id}" value="1" min="1" max="9999"
+              onchange="updatePreview()" onclick="event.stopPropagation()"/>
+            <button class="qty-btn" onclick="chgQty(${a.id},1)">+</button>
+          </div>
+        </div>
+        <div class="article-check-qual">
+          <span style="font-size:12px;color:var(--text2);font-weight:700">Qualité</span>
+          <select id="qual-${a.id}" onclick="event.stopPropagation()"
+            style="padding:5px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;outline:none;background:var(--surface2)">
+            ${qualOpts}
+          </select>
+        </div>
+      </div>
+    </div>`).join('');
+  updatePreview();
+}
+
+function toggleArt(id, e){
+  const chk = document.getElementById('chk-'+id);
+  if(e.target!==chk) chk.checked = !chk.checked;
+  const wrap = document.getElementById('wrap-'+id);
+  wrap.classList.toggle('selected', chk.checked);
+  updatePreview();
+}
+
+function chgQty(id,delta){
+  const inp = document.getElementById('qty-'+id);
+  inp.value = Math.max(1,Number(inp.value)+delta);
+  updatePreview();
+}
+
+function updatePreview(){
+  const selected = state.articles.filter(a=>{
+    const chk = document.getElementById('chk-'+a.id);
+    return chk && chk.checked;
+  });
+  const preview = document.getElementById('mc-demand-preview');
+  document.getElementById('mc-selected-count').textContent = selected.length+' article(s)';
+  preview.style.display = selected.length ? '' : 'none';
+}
+
+function resetDemande(){
+  state.articles.forEach(a=>{
+    const chk = document.getElementById('chk-'+a.id);
+    if(chk){ chk.checked=false; document.getElementById('wrap-'+a.id)?.classList.remove('selected'); }
+    const qty = document.getElementById('qty-'+a.id);
+    if(qty) qty.value=1;
+  });
+  updatePreview();
+}
+
+function submitDemande(){
+  const al = document.getElementById('mc-alert');
+  const selected = state.articles.filter(a=>{
+    const chk = document.getElementById('chk-'+a.id);
+    return chk && chk.checked;
+  });
+  if(!selected.length){
+    al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez sélectionner au moins un article.</div>';
+    setTimeout(()=>al.innerHTML='',3000); return;
+  }
+  const ts = Date.now();
+  selected.forEach(a=>{
+    state.demandes.push({
+      id: ts+Math.random(),
+      mc: state.mc,
+      article: a.name,
+      cat: a.cat,
+      unit: a.unit,
+      qty: document.getElementById('qty-'+a.id)?.value||1,
+      qual: document.getElementById('qual-'+a.id)?.value||'Bonne',
+      ts
+    });
+  });
+  save();
+  al.innerHTML=`<div class="alert alert-success">✅ Demande envoyée avec succès ! (${selected.length} article(s))</div>`;
+  setTimeout(()=>al.innerHTML='',4000);
+  resetDemande();
+}
+
+function renderMCHist(){
+  const dems = state.demandes.filter(d=>d.mc===state.mc);
+  const tbody = document.getElementById('mc-hist-tbody');
+  const empty = document.getElementById('mc-hist-empty');
+  if(!dems.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  empty.style.display='none';
+  tbody.innerHTML = [...dems].reverse().map((d,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${d.article}</strong></td>
+      <td><strong>${d.qty}</strong> ${d.unit||''}</td>
+      <td>${qualBadge(d.qual)}</td>
+      <td style="font-size:12px;color:var(--text3)">${fmtDate(d.ts)}</td>
+      <td><span class="badge badge-success">✅ Envoyée</span></td>
+    </tr>`).join('');
+}
+
+// ════════════════════════════════════════
+//  UTILS
+// ════════════════════════════════════════
+function qualBadge(q){
+  const map={'Très bonne':'badge-success','Bonne':'badge-primary','Standard':'badge-accent','Économique':'badge-warning'};
+  return `<span class="badge ${map[q]||'badge-primary'}">${q||'—'}</span>`;
+}
+function fmtDate(ts){
+  if(!ts) return '—';
+  return new Date(ts).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+
+// ─── Sample data ───
+if(!state.articles.length){
+  state.articles = [
+    {id:1,name:'Tables',cat:'Mobilier',unit:'Pièce',desc:'Tables en bois standard'},
+    {id:2,name:'Chaises',cat:'Mobilier',unit:'Pièce',desc:'Chaises pliantes'},
+    {id:3,name:'Microphones',cat:'Sonorisation',unit:'Pièce',desc:'Microphone dynamique'},
+    {id:4,name:'Ordinateurs portables',cat:'Numérique',unit:'Pièce',desc:'Laptop 15"'},
+    {id:5,name:'Climatiseurs',cat:'Équipement',unit:'Unité',desc:'Split 24000 BTU'},
+    {id:6,name:'Rames de papier A4',cat:'Fournitures',unit:'Rame',desc:'80g/m²'},
+  ];
+  save();
+}
+</script>
+</body>
+</html>
