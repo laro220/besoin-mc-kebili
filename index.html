@@ -7,353 +7,177 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#f5f2eb;
-  --surface:#fff;
-  --surface2:#faf8f4;
-  --border:#e2ddd4;
-  --primary:#2c5f6e;
-  --primary-dark:#1a3d49;
-  --primary-light:#eaf3f5;
-  --accent:#c4872a;
-  --accent-light:#fdf3e3;
-  --danger:#c0392b;
-  --success:#27ae60;
-  --text:#1a1a1a;
-  --text2:#5a5a5a;
-  --text3:#9a9a9a;
-  --shadow:0 2px 16px rgba(44,95,110,0.10);
-  --shadow-lg:0 8px 40px rgba(44,95,110,0.14);
-  --radius:12px;
-  --font-display:'Playfair Display',serif;
-  --font:'Cairo',sans-serif;
+  --bg:#f5f2eb;--surface:#fff;--surface2:#faf8f4;--border:#e2ddd4;
+  --primary:#2c5f6e;--primary-dark:#1a3d49;--primary-light:#eaf3f5;
+  --accent:#c4872a;--accent-light:#fdf3e3;
+  --danger:#c0392b;--success:#27ae60;--warning:#e67e22;
+  --text:#1a1a1a;--text2:#5a5a5a;--text3:#9a9a9a;
+  --shadow:0 2px 16px rgba(44,95,110,0.10);--shadow-lg:0 8px 40px rgba(44,95,110,0.14);
+  --radius:12px;--font-display:'Playfair Display',serif;--font:'Cairo',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);font-family:var(--font);color:var(--text);min-height:100vh}
 button{cursor:pointer;font-family:var(--font)}
-input,select{font-family:var(--font)}
-
-/* ═══ SCREENS ═══ */
+input,select,textarea{font-family:var(--font)}
 .screen{display:none;min-height:100vh}
 .screen.active{display:flex;flex-direction:column}
-
-/* ═══ LOGIN ═══ */
-#s-login{
-  align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#3a7a8c 100%);
-  position:relative;overflow:hidden;
-}
-#s-login::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40v0%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-.login-card{
-  background:rgba(255,255,255,0.97);
-  border-radius:20px;
-  padding:48px 52px;
-  width:100%;max-width:480px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.25);
-  position:relative;z-index:1;
-  animation:slideUp .5s ease;
-}
+/* LOGIN */
+#s-login{align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#3a7a8c 100%);position:relative;overflow:hidden}
+#s-login::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.login-card{background:rgba(255,255,255,0.97);border-radius:20px;padding:48px 52px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,0.25);position:relative;z-index:1;animation:slideUp .5s ease}
 .login-logo{text-align:center;margin-bottom:32px}
-.login-logo .logo-icon{
-  width:72px;height:72px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
-  border-radius:18px;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:32px;margin-bottom:14px;
-  box-shadow:0 6px 20px rgba(44,95,110,0.3);
-}
-.login-logo h1{
-  font-family:var(--font-display);
-  font-size:22px;color:var(--primary-dark);
-  line-height:1.3;
-}
+.login-logo .logo-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:18px;display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;box-shadow:0 6px 20px rgba(44,95,110,0.3)}
+.login-logo h1{font-family:var(--font-display);font-size:22px;color:var(--primary-dark);line-height:1.3}
 .login-logo p{font-size:13px;color:var(--text3);margin-top:4px}
 .login-section{margin-bottom:20px}
-.login-section label{
-  display:block;font-size:13px;font-weight:600;
-  color:var(--text2);margin-bottom:8px;
-  text-transform:uppercase;letter-spacing:.05em;
-}
-.login-section select,.login-section input{
-  width:100%;padding:12px 16px;
-  border:1.5px solid var(--border);border-radius:10px;
-  font-size:15px;color:var(--text);background:var(--surface2);
-  transition:border-color .2s,box-shadow .2s;outline:none;
-}
-.login-section select:focus,.login-section input:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(44,95,110,0.12);
-}
+.login-section label{display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.login-section select,.login-section input{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;color:var(--text);background:var(--surface2);transition:border-color .2s,box-shadow .2s;outline:none}
+.login-section select:focus,.login-section input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(44,95,110,0.12)}
 .login-section input[type=password]{letter-spacing:.1em}
-.btn-login{
-  width:100%;padding:14px;
-  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;border:none;border-radius:10px;
-  font-size:16px;font-weight:700;letter-spacing:.03em;
-  box-shadow:0 4px 16px rgba(44,95,110,0.3);
-  transition:transform .15s,box-shadow .15s;margin-top:8px;
-}
+.btn-login{width:100%;padding:14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;letter-spacing:.03em;box-shadow:0 4px 16px rgba(44,95,110,0.3);transition:transform .15s,box-shadow .15s;margin-top:8px}
 .btn-login:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(44,95,110,0.4)}
-.btn-login:active{transform:translateY(0)}
 .login-hint{text-align:center;margin-top:18px;font-size:12px;color:var(--text3)}
 .login-hint span{color:var(--accent);font-weight:600}
-
-/* ═══ TOPBAR ═══ */
-.topbar{
-  background:linear-gradient(90deg,var(--primary-dark),var(--primary));
-  color:#fff;padding:0 32px;height:68px;
-  display:flex;align-items:center;gap:16px;
-  position:sticky;top:0;z-index:50;
-  box-shadow:0 2px 16px rgba(0,0,0,0.15);
-}
-.topbar-logo{
-  width:40px;height:40px;
-  background:rgba(255,255,255,0.15);
-  border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:20px;
-}
+/* TOPBAR */
+.topbar{background:linear-gradient(90deg,var(--primary-dark),var(--primary));color:#fff;padding:0 32px;height:68px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50;box-shadow:0 2px 16px rgba(0,0,0,0.15)}
+.topbar-logo{width:40px;height:40px;background:rgba(255,255,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
 .topbar-info{flex:1}
 .topbar-title{font-family:var(--font-display);font-size:17px;font-weight:600}
 .topbar-sub{font-size:12px;opacity:.7;margin-top:1px}
-.topbar-user{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,0.12);
-  border-radius:24px;padding:6px 16px 6px 10px;
-  font-size:13px;
-}
-.topbar-avatar{
-  width:32px;height:32px;border-radius:50%;
-  background:rgba(255,255,255,0.25);
-  display:flex;align-items:center;justify-content:center;font-size:15px;
-}
-.btn-logout{
-  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
-  color:#fff;border-radius:8px;padding:6px 14px;
-  font-size:13px;font-weight:600;transition:background .2s;
-}
+.topbar-user{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.12);border-radius:24px;padding:6px 16px 6px 10px;font-size:13px}
+.topbar-avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:15px}
+.btn-logout{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:600;transition:background .2s}
 .btn-logout:hover{background:rgba(255,255,255,0.25)}
-
-/* ═══ TABS ═══ */
-.tabs{
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  display:flex;padding:0 32px;gap:4px;
-}
-.tab{
-  padding:14px 22px;font-size:14px;font-weight:600;
-  border:none;background:none;color:var(--text2);
-  border-bottom:2px solid transparent;
-  transition:all .2s;position:relative;top:1px;
-}
+.notif-badge{background:#e74c3c;color:#fff;border-radius:10px;padding:2px 7px;font-size:11px;font-weight:700;margin-left:5px}
+/* TABS */
+.tabs{background:var(--surface);border-bottom:1px solid var(--border);display:flex;padding:0 32px;gap:4px;overflow-x:auto}
+.tab{padding:14px 20px;font-size:14px;font-weight:600;border:none;background:none;color:var(--text2);border-bottom:2px solid transparent;transition:all .2s;position:relative;top:1px;white-space:nowrap}
 .tab:hover{color:var(--primary)}
 .tab.active{color:var(--primary);border-bottom-color:var(--primary)}
-
-/* ═══ CONTENT ═══ */
-.content{flex:1;padding:32px;max-width:1100px;width:100%;margin:0 auto}
-
-/* Cards */
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);box-shadow:var(--shadow);
-  overflow:hidden;margin-bottom:24px;
-}
-.card-header{
-  padding:20px 24px;border-bottom:1px solid var(--border);
-  background:var(--surface2);
-  display:flex;align-items:center;gap:12px;
-}
+/* CONTENT */
+.content{flex:1;padding:32px;max-width:1150px;width:100%;margin:0 auto}
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px}
+.card-header{padding:20px 24px;border-bottom:1px solid var(--border);background:var(--surface2);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .card-header h2{font-size:16px;font-weight:700;color:var(--primary-dark);flex:1}
-.card-icon{
-  width:36px;height:36px;border-radius:8px;
-  background:var(--primary-light);
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-}
+.card-icon{width:36px;height:36px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .card-body{padding:24px}
-
-/* Form Row */
+/* FORM */
 .form-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
 .form-group{flex:1;min-width:180px}
-.form-group label{
-  display:block;font-size:12px;font-weight:700;
-  color:var(--text2);margin-bottom:6px;
-  text-transform:uppercase;letter-spacing:.06em;
-}
-.form-group input,.form-group select{
-  width:100%;padding:10px 14px;
-  border:1.5px solid var(--border);border-radius:8px;
-  font-size:14px;color:var(--text);background:var(--surface2);
-  transition:border-color .2s,box-shadow .2s;outline:none;
-}
-.form-group input:focus,.form-group select:focus{
-  border-color:var(--primary);box-shadow:0 0 0 3px rgba(44,95,110,0.1);
-}
-
-/* Buttons */
-.btn{
-  padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;
-  border:none;transition:all .15s;display:inline-flex;align-items:center;gap:7px;
-}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:var(--surface2);transition:border-color .2s,box-shadow .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(44,95,110,0.1)}
+.form-group textarea{resize:vertical;min-height:72px}
+/* BUTTONS */
+.btn{padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
 .btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(44,95,110,0.2)}
 .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
 .btn-accent{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(196,135,42,0.2)}
 .btn-accent:hover{background:#a97020}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-warning:hover{background:#d35400}
 .btn-danger{background:var(--danger);color:#fff}
 .btn-danger:hover{background:#962d22}
 .btn-ghost{background:transparent;color:var(--text2);border:1.5px solid var(--border)}
 .btn-ghost:hover{background:var(--surface2);color:var(--text)}
-.btn-sm{padding:7px 14px;font-size:13px}
 .btn-success{background:var(--success);color:#fff}
-
-/* Tables */
+.btn-success:hover{background:#219a52}
+.btn-sm{padding:7px 14px;font-size:13px}
+/* TABLE */
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
-thead th{
-  background:var(--primary-light);color:var(--primary-dark);
-  font-size:12px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.06em;padding:11px 16px;text-align:left;
-  border-bottom:2px solid var(--border);white-space:nowrap;
-}
+thead th{background:var(--primary-light);color:var(--primary-dark);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:11px 16px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap}
 tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
 tbody tr:hover{background:var(--surface2)}
-tbody td{padding:11px 16px;color:var(--text)}
-tbody td:last-child{white-space:nowrap}
-.badge{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;
-}
+tbody td{padding:11px 16px;color:var(--text);vertical-align:middle}
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700}
 .badge-primary{background:var(--primary-light);color:var(--primary)}
 .badge-accent{background:var(--accent-light);color:var(--accent)}
 .badge-success{background:#e8f5e9;color:var(--success)}
-.badge-warning{background:#fff8e1;color:#e67e22}
-
-/* Alert */
-.alert{
-  padding:12px 18px;border-radius:8px;font-size:14px;
-  margin-bottom:16px;display:flex;align-items:center;gap:10px;
-  animation:slideUp .3s ease;
-}
+.badge-warning{background:#fff8e1;color:var(--warning)}
+.badge-danger{background:#fde8e6;color:var(--danger)}
+.badge-draw{background:#fce4ec;color:#c2185b}
+.badge-theatre{background:#ede7f6;color:#6a1b9a}
+/* ALERT */
+.alert{padding:12px 18px;border-radius:8px;font-size:14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:slideUp .3s ease}
 .alert-success{background:#e8f5e9;color:#1a5c2a;border:1px solid #a5d6a7}
 .alert-danger{background:#fde8e6;color:#7f1d1d;border:1px solid #f5a9a3}
-
-/* Empty */
-.empty{
-  text-align:center;padding:48px 24px;color:var(--text3);
-}
-.empty-icon{font-size:48px;margin-bottom:12px;opacity:.4}
-.empty p{font-size:14px}
-
-/* Stat cards */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
-.stat-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px;
-  box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;
-}
-.stat-icon{
-  width:48px;height:48px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;font-size:24px;
-  flex-shrink:0;
-}
+.alert-warning{background:#fff8e1;color:#7a4f00;border:1px solid #ffe082}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px}
+.stat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
 .stat-label{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
 .stat-value{font-size:26px;font-weight:700;color:var(--primary-dark);font-family:var(--font-display)}
-
-/* MC Selection */
-.mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:24px}
-.mc-btn{
-  padding:28px 20px;border-radius:14px;
-  border:2px solid var(--border);background:var(--surface);
-  text-align:center;transition:all .2s;cursor:pointer;
-  box-shadow:var(--shadow);
-}
-.mc-btn:hover{border-color:var(--primary);background:var(--primary-light);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.mc-btn .mc-icon{font-size:36px;margin-bottom:12px}
-.mc-btn .mc-name{font-size:15px;font-weight:700;color:var(--primary-dark)}
-.mc-btn .mc-city{font-size:12px;color:var(--text3);margin-top:3px}
-
-/* Print */
+/* PRINT */
 @media print{
   body *{visibility:hidden !important}
   #print-area,#print-area *{visibility:visible !important}
-  #print-area{
-    position:fixed;inset:0;background:#fff;
-    padding:24px;z-index:9999;
-    visibility:visible !important;
-  }
+  #print-area{position:fixed;inset:0;background:#fff;padding:24px;z-index:9999;visibility:visible !important}
   .no-print{display:none !important}
 }
-.print-header{
-  display:none;
-  border-bottom:2px solid var(--primary);
-  padding-bottom:16px;margin-bottom:20px;
-}
-@media print{
-  .print-header{display:flex !important;align-items:center;gap:16px}
-}
+.print-header{display:none;border-bottom:2px solid var(--primary);padding-bottom:16px;margin-bottom:20px}
+@media print{.print-header{display:flex !important;align-items:center;gap:16px}}
 .print-header .print-logo{font-size:28px}
 .print-header .print-title h1{font-size:18px;color:var(--primary-dark);font-family:var(--font-display)}
 .print-header .print-title p{font-size:12px;color:var(--text2)}
-
-/* Quantity control */
+/* QTY */
 .qty-ctrl{display:flex;align-items:center;gap:8px}
-.qty-btn{
-  width:28px;height:28px;border-radius:6px;border:1.5px solid var(--border);
-  background:var(--surface2);font-size:16px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;transition:all .15s;
-  color:var(--primary);padding:0;
-}
+.qty-btn{width:28px;height:28px;border-radius:6px;border:1.5px solid var(--border);background:var(--surface2);font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;color:var(--primary);padding:0}
 .qty-btn:hover{background:var(--primary-light);border-color:var(--primary)}
-.qty-input{
-  width:56px;text-align:center;padding:5px 8px;
-  border:1.5px solid var(--border);border-radius:6px;font-size:14px;
-  font-weight:600;outline:none;
-}
+.qty-input{width:56px;text-align:center;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-weight:600;outline:none}
 .qty-input:focus{border-color:var(--primary)}
-
-/* Checkbox list */
-.article-list-check{display:flex;flex-direction:column;gap:10px}
-.article-check-item{
-  display:flex;align-items:center;gap:14px;
-  padding:14px 18px;border:1.5px solid var(--border);border-radius:10px;
-  background:var(--surface);transition:all .15s;cursor:pointer;
-}
+/* ARTICLE CHECK */
+.article-list-check{display:flex;flex-direction:column;gap:8px}
+.article-check-item{display:flex;align-items:center;gap:14px;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;background:var(--surface);transition:all .15s;cursor:pointer;flex-wrap:wrap}
 .article-check-item:hover{border-color:var(--primary);background:var(--primary-light)}
 .article-check-item.selected{border-color:var(--primary);background:var(--primary-light)}
-.article-check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
-.article-check-name{flex:1;font-size:14px;font-weight:600;color:var(--text)}
-.article-check-meta{display:flex;gap:8px;flex-wrap:wrap}
-.article-check-qty,.article-check-qual{display:flex;align-items:center;gap:6px}
-
-/* Demand summary MC */
-.demand-total-bar{
-  background:var(--primary-light);border:1px solid var(--primary);
-  border-radius:10px;padding:14px 20px;
-  display:flex;align-items:center;justify-content:space-between;
-  margin-top:16px;
-}
+.article-check-item.already-sent{border-color:#f39c12;background:#fffbf0}
+.article-check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary);flex-shrink:0}
+.article-check-name{flex:1;font-size:14px;font-weight:600;color:var(--text);min-width:120px}
+.article-check-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cat-separator{padding:7px 12px;background:var(--surface2);border-radius:8px;font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;margin-top:8px}
+/* DEMAND PREVIEW */
+.demand-total-bar{background:var(--primary-light);border:1px solid var(--primary);border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;margin-top:16px}
 .demand-total-bar span{font-size:14px;color:var(--primary-dark);font-weight:600}
 .demand-total-bar strong{font-size:18px;color:var(--primary)}
-
-/* Animations */
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s ease}
+.modal{background:var(--surface);border-radius:16px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,0.25);overflow:hidden;animation:slideUp .25s ease}
+.modal-header{padding:20px 24px;border-bottom:1px solid var(--border);background:var(--surface2);display:flex;align-items:center;gap:12px}
+.modal-header h3{font-size:16px;font-weight:700;color:var(--primary-dark);flex:1}
+.modal-close{width:32px;height:32px;border-radius:8px;border:none;background:var(--border);color:var(--text2);font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.modal-close:hover{background:var(--danger);color:#fff}
+.modal-body{padding:24px}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;background:var(--surface2)}
+/* SUGGESTION */
+.suggestion-item{padding:16px 20px;border:1.5px solid #ffe082;border-radius:10px;background:#fffde7;margin-bottom:10px;transition:all .15s}
+.suggestion-item:hover{border-color:var(--accent);background:var(--accent-light)}
+/* EMPTY */
+.empty{text-align:center;padding:48px 24px;color:var(--text3)}
+.empty-icon{font-size:48px;margin-bottom:12px;opacity:.4}
+.empty p{font-size:14px}
+/* ANIMATIONS */
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .fade-in{animation:fadeIn .3s ease}
-
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:640px){
-  .topbar{padding:0 16px;height:60px}
-  .content{padding:16px}
-  .tabs{padding:0 16px}
+  .topbar{padding:0 14px;height:60px}
+  .content{padding:14px}
+  .tabs{padding:0 10px}
   .form-row{flex-direction:column}
   .form-group{min-width:100%}
+  .login-card{padding:32px 22px}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ LOGIN SCREEN ═══════════════════ -->
+<!-- ═══ LOGIN ═══ -->
 <div class="screen active" id="s-login">
   <div class="login-card">
     <div class="login-logo">
@@ -389,7 +213,7 @@ tbody td:last-child{white-space:nowrap}
   </div>
 </div>
 
-<!-- ═══════════════════ ADMIN SCREEN ═══════════════════ -->
+<!-- ═══ ADMIN ═══ -->
 <div class="screen" id="s-admin">
   <div class="topbar">
     <div class="topbar-logo">🏛️</div>
@@ -397,92 +221,89 @@ tbody td:last-child{white-space:nowrap}
       <div class="topbar-title">CRAC Kébili — Administration</div>
       <div class="topbar-sub">Commissariat Régional des Affaires Culturelles</div>
     </div>
-    <div class="topbar-user">
-      <div class="topbar-avatar">👨‍💼</div>
-      <span>Administrateur</span>
-    </div>
+    <div class="topbar-user"><div class="topbar-avatar">👨‍💼</div><span>Administrateur</span></div>
     <button class="btn-logout" onclick="logout()">Déconnexion</button>
   </div>
   <div class="tabs">
     <button class="tab active" onclick="adminTab('articles',this)">📦 Gestion des Articles</button>
     <button class="tab" onclick="adminTab('demandes',this)">📋 Demandes MC</button>
+    <button class="tab" onclick="adminTab('suggestions',this)">💡 Suggestions <span class="notif-badge" id="sug-badge" style="display:none">0</span></button>
     <button class="tab" onclick="adminTab('synthese',this)">📊 Synthèse & Impression</button>
   </div>
-
   <div class="content">
 
-    <!-- TAB: Articles -->
+    <!-- Articles -->
     <div id="admin-tab-articles" class="fade-in">
       <div id="admin-alert"></div>
-
-      <!-- Stats -->
       <div class="stats" id="admin-stats"></div>
-
-      <!-- Add article -->
-      <div class="card">
+      <div class="card" id="art-form-card">
         <div class="card-header">
-          <div class="card-icon">➕</div>
-          <h2>Ajouter un Article</h2>
+          <div class="card-icon" id="art-form-icon">➕</div>
+          <h2 id="art-form-title">Ajouter un Article</h2>
         </div>
         <div class="card-body">
+          <input type="hidden" id="art-edit-id"/>
           <div class="form-row">
             <div class="form-group" style="flex:2">
               <label>Désignation de l'article *</label>
-              <input type="text" id="art-name" placeholder="Ex: Tables, Chaises, Microphones…"/>
+              <input type="text" id="art-name" placeholder="Ex: Crayons de couleur, Costumes, Pinceaux…"/>
             </div>
             <div class="form-group">
               <label>Catégorie</label>
               <select id="art-cat">
-                <option value="Mobilier">🪑 Mobilier</option>
-                <option value="Équipement">🔧 Équipement</option>
-                <option value="Fournitures">📦 Fournitures</option>
-                <option value="Numérique">💻 Numérique</option>
-                <option value="Sonorisation">🎤 Sonorisation</option>
-                <option value="Autre">📌 Autre</option>
+                <optgroup label="🎨 Atelier de Dessin">
+                  <option value="Fournitures Dessin">🖌️ Fournitures — Dessin</option>
+                  <option value="Consommables Dessin">🎨 Consommables — Dessin</option>
+                </optgroup>
+                <optgroup label="🎭 Club de Théâtre">
+                  <option value="Fournitures Théâtre">🎭 Fournitures — Théâtre</option>
+                  <option value="Consommables Théâtre">🪄 Consommables — Théâtre</option>
+                </optgroup>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Unité de mesure</label>
-              <input type="text" id="art-unit" placeholder="Ex: Pièce, Lot, Kg…"/>
+              <input type="text" id="art-unit" placeholder="Ex: Pièce, Boîte, Flacon, Rouleau…"/>
             </div>
             <div class="form-group" style="flex:2">
               <label>Description (facultatif)</label>
-              <input type="text" id="art-desc" placeholder="Description ou spécification…"/>
+              <input type="text" id="art-desc" placeholder="Spécification ou remarque…"/>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="addArticle()">➕ Ajouter l'article</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-primary" id="art-submit-btn" onclick="saveArticle()">➕ Ajouter l'article</button>
+            <button class="btn btn-ghost" id="art-cancel-btn" onclick="cancelEditArticle()" style="display:none">✖ Annuler</button>
+          </div>
         </div>
       </div>
-
-      <!-- Articles list -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon">📦</div>
           <h2>Liste des Articles Disponibles</h2>
-          <input type="text" id="art-search" placeholder="🔍 Rechercher…"
-            style="padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;width:200px;outline:none"
-            oninput="renderArticlesAdmin()"/>
+          <input type="text" id="art-search" placeholder="🔍 Rechercher…" style="padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;width:170px;outline:none" oninput="renderArticlesAdmin()"/>
+          <select id="art-filter-cat" onchange="renderArticlesAdmin()" style="padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none">
+            <option value="">Toutes</option>
+            <option value="Fournitures Dessin">🖌️ Fournitures Dessin</option>
+            <option value="Consommables Dessin">🎨 Consommables Dessin</option>
+            <option value="Fournitures Théâtre">🎭 Fournitures Théâtre</option>
+            <option value="Consommables Théâtre">🪄 Consommables Théâtre</option>
+          </select>
         </div>
         <div class="card-body" style="padding:0">
           <div class="table-wrap">
             <table>
-              <thead><tr>
-                <th>#</th><th>Désignation</th><th>Catégorie</th>
-                <th>Unité</th><th>Description</th><th>Actions</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Désignation</th><th>Catégorie</th><th>Unité</th><th>Description</th><th>Actions</th></tr></thead>
               <tbody id="admin-art-tbody"></tbody>
             </table>
           </div>
-          <div id="admin-art-empty" class="empty" style="display:none">
-            <div class="empty-icon">📦</div><p>Aucun article ajouté</p>
-          </div>
+          <div id="admin-art-empty" class="empty" style="display:none"><div class="empty-icon">📦</div><p>Aucun article ajouté</p></div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: Demandes -->
+    <!-- Demandes -->
     <div id="admin-tab-demandes" style="display:none" class="fade-in">
       <div class="stats" id="dem-stats"></div>
       <div class="card">
@@ -500,21 +321,27 @@ tbody td:last-child{white-space:nowrap}
         <div class="card-body" style="padding:0">
           <div class="table-wrap">
             <table>
-              <thead><tr>
-                <th>#</th><th>Maison de Culture</th><th>Article</th>
-                <th>Quantité</th><th>Qualité</th><th>Date</th><th>Statut</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Article</th><th>Quantité Totale</th><th>Qualité(s)</th><th>Maisons de Culture</th><th>Statut</th></tr></thead>
               <tbody id="admin-dem-tbody"></tbody>
             </table>
           </div>
-          <div id="admin-dem-empty" class="empty" style="display:none">
-            <div class="empty-icon">📭</div><p>Aucune demande reçue</p>
-          </div>
+          <div id="admin-dem-empty" class="empty" style="display:none"><div class="empty-icon">📭</div><p>Aucune demande reçue</p></div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: Synthèse -->
+    <!-- Suggestions -->
+    <div id="admin-tab-suggestions" style="display:none" class="fade-in">
+      <div class="card">
+        <div class="card-header"><div class="card-icon">💡</div><h2>Suggestions d'Articles des Agents MC</h2></div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:20px">Les agents MC ont suggéré les articles ci-dessous. Vous pouvez les accepter (ajout automatique à la liste) ou les rejeter.</p>
+          <div id="sug-list-admin"><div class="empty"><div class="empty-icon">💡</div><p>Aucune suggestion reçue.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Synthèse -->
     <div id="admin-tab-synthese" style="display:none" class="fade-in">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
         <div>
@@ -523,7 +350,6 @@ tbody td:last-child{white-space:nowrap}
         </div>
         <button class="btn btn-accent" onclick="printSynthese()">🖨️ Imprimer la liste</button>
       </div>
-
       <div id="print-area">
         <div class="print-header">
           <div class="print-logo">🏛️</div>
@@ -532,32 +358,16 @@ tbody td:last-child{white-space:nowrap}
             <p>Tableau récapitulatif des besoins des Maisons de Culture · Imprimé le <span id="print-date"></span></p>
           </div>
         </div>
-
         <div class="card">
-          <div class="card-header">
-            <div class="card-icon">📊</div>
-            <h2>Récapitulatif Global des Demandes</h2>
-          </div>
+          <div class="card-header"><div class="card-icon">📊</div><h2>Récapitulatif Global des Demandes</h2></div>
           <div class="card-body" style="padding:0">
             <div class="table-wrap">
-              <table id="synthese-table">
-                <thead><tr>
-                  <th>#</th>
-                  <th>Article</th>
-                  <th>Catégorie</th>
-                  <th>MC Kébili</th>
-                  <th>MC Douz</th>
-                  <th>MC Souk Lahad</th>
-                  <th>MC Faouar</th>
-                  <th>Quantité Totale</th>
-                  <th>Qualité demandée</th>
-                </tr></thead>
+              <table>
+                <thead><tr><th>#</th><th>Article</th><th>Catégorie</th><th>MC Kébili</th><th>MC Douz</th><th>MC Souk Lahad</th><th>MC Faouar</th><th>Quantité Totale</th><th>Qualité demandée</th></tr></thead>
                 <tbody id="synthese-tbody"></tbody>
               </table>
             </div>
-            <div id="synthese-empty" class="empty" style="display:none">
-              <div class="empty-icon">📊</div><p>Aucune demande à synthétiser</p>
-            </div>
+            <div id="synthese-empty" class="empty" style="display:none"><div class="empty-icon">📊</div><p>Aucune demande à synthétiser</p></div>
           </div>
         </div>
       </div>
@@ -566,7 +376,7 @@ tbody td:last-child{white-space:nowrap}
   </div>
 </div>
 
-<!-- ═══════════════════ AGENT MC SCREEN ═══════════════════ -->
+<!-- ═══ AGENT MC ═══ -->
 <div class="screen" id="s-mc">
   <div class="topbar">
     <div class="topbar-logo">🏛️</div>
@@ -574,35 +384,27 @@ tbody td:last-child{white-space:nowrap}
       <div class="topbar-title" id="mc-topbar-title">Maison de Culture</div>
       <div class="topbar-sub">CRAC Kébili — Formulaire de Demande</div>
     </div>
-    <div class="topbar-user">
-      <div class="topbar-avatar">👤</div>
-      <span id="mc-topbar-name"></span>
-    </div>
+    <div class="topbar-user"><div class="topbar-avatar">👤</div><span id="mc-topbar-name"></span></div>
     <button class="btn-logout" onclick="logout()">Déconnexion</button>
   </div>
   <div class="tabs">
     <button class="tab active" onclick="mcTab('demande',this)">📝 Nouvelle Demande</button>
+    <button class="tab" onclick="mcTab('suggestion',this)">💡 Suggérer un Article</button>
     <button class="tab" onclick="mcTab('historique',this)">📋 Mes Demandes</button>
   </div>
-
   <div class="content">
 
-    <!-- TAB: Nouvelle Demande -->
+    <!-- Demande -->
     <div id="mc-tab-demande" class="fade-in">
       <div id="mc-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div class="card-icon">📝</div>
-          <h2>Sélectionner les Articles à Demander</h2>
-        </div>
+        <div class="card-header"><div class="card-icon">📝</div><h2>Sélectionner les Articles à Demander</h2></div>
         <div class="card-body">
           <p style="font-size:13px;color:var(--text2);margin-bottom:16px">
-            Cochez les articles dont vous avez besoin, indiquez la quantité et la qualité souhaitée.
+            Cochez les articles souhaités et indiquez la quantité et la qualité.
+            <span style="color:var(--warning);font-weight:600"> ⚠️ Les articles déjà demandés sont mis en évidence.</span>
           </p>
-          <div class="article-list-check" id="mc-art-list">
-            <div class="empty"><div class="empty-icon">⏳</div><p>Chargement des articles…</p></div>
-          </div>
-
+          <div class="article-list-check" id="mc-art-list"></div>
           <div id="mc-demand-preview" style="display:none;margin-top:20px">
             <div class="demand-total-bar">
               <span>Articles sélectionnés :</span>
@@ -610,38 +412,74 @@ tbody td:last-child{white-space:nowrap}
             </div>
             <div style="margin-top:12px;display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
               <button class="btn btn-ghost" onclick="resetDemande()">✖ Réinitialiser</button>
-              <button class="btn btn-success" onclick="submitDemande()">✅ Valider et Envoyer la Demande</button>
+              <button class="btn btn-success" onclick="submitDemande()">✅ Valider et Envoyer</button>
             </div>
           </div>
-
           <div id="mc-no-articles" class="empty" style="display:none">
             <div class="empty-icon">📭</div>
-            <p>Aucun article disponible.<br/>Veuillez attendre que l'administrateur ajoute des articles.</p>
+            <p>Aucun article disponible.<br/>Attendez que l'administrateur ajoute des articles.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB: Historique -->
+    <!-- Suggestion -->
+    <div id="mc-tab-suggestion" style="display:none" class="fade-in">
+      <div id="mc-sug-alert"></div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon">💡</div><h2>Suggérer un Article Manquant</h2></div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:20px">Si un article nécessaire n'est pas dans la liste, suggérez-le à l'administrateur CRAC. Il sera examiné et ajouté si accepté.</p>
+          <div class="form-row">
+            <div class="form-group" style="flex:2">
+              <label>Désignation de l'article suggéré *</label>
+              <input type="text" id="sug-name" placeholder="Ex: Papier calque A3, Projecteur de scène…"/>
+            </div>
+            <div class="form-group">
+              <label>Catégorie</label>
+              <select id="sug-cat">
+                <optgroup label="🎨 Atelier de Dessin">
+                  <option value="Fournitures Dessin">🖌️ Fournitures — Dessin</option>
+                  <option value="Consommables Dessin">🎨 Consommables — Dessin</option>
+                </optgroup>
+                <optgroup label="🎭 Club de Théâtre">
+                  <option value="Fournitures Théâtre">🎭 Fournitures — Théâtre</option>
+                  <option value="Consommables Théâtre">🪄 Consommables — Théâtre</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Unité de mesure</label>
+              <input type="text" id="sug-unit" placeholder="Pièce, Boîte, Rouleau…"/>
+            </div>
+            <div class="form-group" style="flex:2">
+              <label>Justification / Description *</label>
+              <textarea id="sug-desc" placeholder="Pourquoi cet article est nécessaire ? Précisez les spécifications…"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-accent" onclick="submitSuggestion()">💡 Envoyer la Suggestion</button>
+          <div style="margin-top:28px">
+            <h3 style="font-size:15px;font-weight:700;color:var(--primary-dark);margin-bottom:12px">Mes Suggestions Envoyées</h3>
+            <div id="mc-my-suggestions"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historique -->
     <div id="mc-tab-historique" style="display:none" class="fade-in">
       <div class="card">
-        <div class="card-header">
-          <div class="card-icon">📋</div>
-          <h2 id="mc-hist-title">Mes Demandes</h2>
-        </div>
+        <div class="card-header"><div class="card-icon">📋</div><h2 id="mc-hist-title">Mes Demandes</h2></div>
         <div class="card-body" style="padding:0">
           <div class="table-wrap">
             <table>
-              <thead><tr>
-                <th>#</th><th>Article</th><th>Quantité</th>
-                <th>Qualité</th><th>Date d'envoi</th><th>Statut</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Article</th><th>Quantité</th><th>Qualité</th><th>Date d'envoi</th><th>Statut</th></tr></thead>
               <tbody id="mc-hist-tbody"></tbody>
             </table>
           </div>
-          <div id="mc-hist-empty" class="empty" style="display:none">
-            <div class="empty-icon">📭</div><p>Aucune demande envoyée</p>
-          </div>
+          <div id="mc-hist-empty" class="empty" style="display:none"><div class="empty-icon">📭</div><p>Aucune demande envoyée</p></div>
         </div>
       </div>
     </div>
@@ -649,342 +487,500 @@ tbody td:last-child{white-space:nowrap}
   </div>
 </div>
 
-<script>
-// ════════════════════════════════════════
-//  DATA STORE
-// ════════════════════════════════════════
-const MCS = ['MC Kébili','MC Douz','MC Souk Lahad','MC Faouar'];
-const PASS = 'crac2024';
+<!-- MODAL DOUBLON -->
+<div id="modal-doublon" class="modal-overlay" style="display:none">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="card-icon" style="background:#fff8e1">⚠️</div>
+      <h3>Article déjà demandé</h3>
+      <button class="modal-close" onclick="closeModal('modal-doublon')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert alert-warning" id="doublon-msg" style="margin-bottom:16px"></div>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:16px">Vous pouvez modifier la quantité et la qualité de cette demande :</p>
+      <div style="background:var(--surface2);border-radius:10px;padding:16px;border:1px solid var(--border)">
+        <div class="form-row" style="margin-bottom:0">
+          <div class="form-group">
+            <label>Quantité</label>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="chgDoublonQty(-1)">−</button>
+              <input class="qty-input" type="number" id="doublon-qty" min="1" max="9999" style="width:70px"/>
+              <button class="qty-btn" onclick="chgDoublonQty(1)">+</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Qualité</label>
+            <select id="doublon-qual" style="padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;outline:none;background:var(--surface2)">
+              <option>Très bonne</option><option>Bonne</option><option>Standard</option><option>Économique</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-doublon')">Annuler</button>
+      <button class="btn btn-warning" onclick="confirmDoublon()">✏️ Modifier la demande</button>
+    </div>
+  </div>
+</div>
 
-let state = {
-  role: null,
-  mc: null,
-  articles: JSON.parse(localStorage.getItem('crac_articles') || '[]'),
-  demandes: JSON.parse(localStorage.getItem('crac_demandes') || '[]'),
+<script>
+// ══════════════════════════
+//  CONSTANTS & STATE
+// ══════════════════════════
+const MCS=['MC Kébili','MC Douz','MC Souk Lahad','MC Faouar'];
+const PASS='crac2024';
+const CATICONS={'Fournitures Dessin':'🖌️','Consommables Dessin':'🎨','Fournitures Théâtre':'🎭','Consommables Théâtre':'🪄'};
+const CATBADGE={'Fournitures Dessin':'badge-draw','Consommables Dessin':'badge-draw','Fournitures Théâtre':'badge-theatre','Consommables Théâtre':'badge-theatre'};
+
+let state={
+  role:null,mc:null,
+  articles:   JSON.parse(localStorage.getItem('crac_articles')||'[]'),
+  demandes:   JSON.parse(localStorage.getItem('crac_demandes')||'[]'),
+  suggestions:JSON.parse(localStorage.getItem('crac_suggestions')||'[]'),
 };
+let _doublonData=null;
 
 function save(){
-  localStorage.setItem('crac_articles', JSON.stringify(state.articles));
-  localStorage.setItem('crac_demandes', JSON.stringify(state.demandes));
+  localStorage.setItem('crac_articles',   JSON.stringify(state.articles));
+  localStorage.setItem('crac_demandes',   JSON.stringify(state.demandes));
+  localStorage.setItem('crac_suggestions',JSON.stringify(state.suggestions));
 }
 
-// ════════════════════════════════════════
+// ══════════════════════════
 //  AUTH
-// ════════════════════════════════════════
+// ══════════════════════════
 function onRoleChange(){
-  const r = document.getElementById('login-role').value;
-  document.getElementById('mc-select-wrap').style.display = r==='mc' ? '' : 'none';
+  document.getElementById('mc-select-wrap').style.display=
+    document.getElementById('login-role').value==='mc'?'':'none';
 }
-
 function doLogin(){
-  const role = document.getElementById('login-role').value;
-  const pass = document.getElementById('login-pass').value;
-  const mc   = document.getElementById('login-mc')?.value;
-  const al   = document.getElementById('login-alert');
-  al.innerHTML = '';
-
-  if(!role){ al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez sélectionner un rôle.</div>'; return; }
-  if(role==='mc' && !mc){ al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez choisir une Maison de Culture.</div>'; return; }
-  if(pass !== PASS){ al.innerHTML='<div class="alert alert-danger">🔒 Mot de passe incorrect.</div>'; return; }
-
-  state.role = role;
-  state.mc   = mc || null;
-
-  show(role==='admin' ? 's-admin' : 's-mc');
-  if(role==='admin') initAdmin();
-  else initMC();
+  const role=document.getElementById('login-role').value;
+  const pass=document.getElementById('login-pass').value;
+  const mc  =document.getElementById('login-mc').value;
+  const al  =document.getElementById('login-alert');
+  al.innerHTML='';
+  if(!role){al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez sélectionner un rôle.</div>';return;}
+  if(role==='mc'&&!mc){al.innerHTML='<div class="alert alert-danger">⚠️ Choisissez une Maison de Culture.</div>';return;}
+  if(pass!==PASS){al.innerHTML='<div class="alert alert-danger">🔒 Mot de passe incorrect.</div>';return;}
+  state.role=role; state.mc=mc||null;
+  show(role==='admin'?'s-admin':'s-mc');
+  role==='admin'?initAdmin():initMC();
 }
-
 function logout(){
-  state.role=null; state.mc=null;
+  state.role=null;state.mc=null;
   show('s-login');
   document.getElementById('login-pass').value='';
   document.getElementById('login-role').value='';
   document.getElementById('mc-select-wrap').style.display='none';
   document.getElementById('login-alert').innerHTML='';
 }
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-// ════════════════════════════════════════
-//  ADMIN — INIT
-// ════════════════════════════════════════
+// ══════════════════════════
+//  ADMIN
+// ══════════════════════════
 function initAdmin(){
-  adminTab('articles', document.querySelector('#s-admin .tab'));
-  renderArticlesAdmin();
-  renderAdminStats();
+  adminTab('articles',document.querySelector('#s-admin .tab'));
+  updateSugBadge();
 }
-
-function adminTab(name, el){
+function adminTab(name,el){
   document.querySelectorAll('#s-admin .tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  ['articles','demandes','synthese'].forEach(t=>{
-    document.getElementById('admin-tab-'+t).style.display = t===name ? '' : 'none';
+  ['articles','demandes','suggestions','synthese'].forEach(t=>{
+    document.getElementById('admin-tab-'+t).style.display=t===name?'':'none';
   });
-  if(name==='articles'){ renderArticlesAdmin(); renderAdminStats(); }
-  if(name==='demandes'){ renderDemandes(); renderDemStats(); }
-  if(name==='synthese'){ renderSynthese(); }
+  if(name==='articles'){renderArticlesAdmin();renderAdminStats();}
+  if(name==='demandes'){renderDemandes();renderDemStats();}
+  if(name==='suggestions')renderSuggestionsAdmin();
+  if(name==='synthese')renderSynthese();
 }
 
-// ─── Articles Admin ───
-function addArticle(){
-  const name = document.getElementById('art-name').value.trim();
-  const cat  = document.getElementById('art-cat').value;
-  const unit = document.getElementById('art-unit').value.trim() || 'Pièce';
-  const desc = document.getElementById('art-desc').value.trim();
-  const al   = document.getElementById('admin-alert');
-  if(!name){ al.innerHTML='<div class="alert alert-danger">⚠️ La désignation est obligatoire.</div>'; setTimeout(()=>al.innerHTML='',3000); return; }
-  if(state.articles.find(a=>a.name.toLowerCase()===name.toLowerCase())){
-    al.innerHTML='<div class="alert alert-danger">⚠️ Cet article existe déjà.</div>'; setTimeout(()=>al.innerHTML='',3000); return;
+// — Articles —
+function saveArticle(){
+  const name=document.getElementById('art-name').value.trim();
+  const cat =document.getElementById('art-cat').value;
+  const unit=document.getElementById('art-unit').value.trim()||'Pièce';
+  const desc=document.getElementById('art-desc').value.trim();
+  const editId=document.getElementById('art-edit-id').value;
+  if(!name){showAlert('admin-alert','danger','⚠️ La désignation est obligatoire.');return;}
+  if(editId){
+    if(state.articles.find(a=>a.name.toLowerCase()===name.toLowerCase()&&String(a.id)!==editId)){
+      showAlert('admin-alert','danger','⚠️ Un autre article porte déjà ce nom.');return;
+    }
+    const idx=state.articles.findIndex(a=>String(a.id)===editId);
+    if(idx>-1){state.articles[idx]={...state.articles[idx],name,cat,unit,desc};save();}
+    cancelEditArticle();
+    showAlert('admin-alert','success','✅ Article modifié avec succès.');
+  } else {
+    if(state.articles.find(a=>a.name.toLowerCase()===name.toLowerCase())){
+      showAlert('admin-alert','danger','⚠️ Cet article existe déjà dans la liste.');return;
+    }
+    state.articles.push({id:Date.now(),name,cat,unit,desc});
+    save();
+    ['art-name','art-unit','art-desc'].forEach(id=>document.getElementById(id).value='');
+    showAlert('admin-alert','success','✅ Article ajouté avec succès.');
   }
-  state.articles.push({ id: Date.now(), name, cat, unit, desc });
-  save();
-  document.getElementById('art-name').value='';
-  document.getElementById('art-unit').value='';
-  document.getElementById('art-desc').value='';
-  al.innerHTML='<div class="alert alert-success">✅ Article ajouté avec succès.</div>';
-  setTimeout(()=>al.innerHTML='',3000);
-  renderArticlesAdmin();
-  renderAdminStats();
+  renderArticlesAdmin();renderAdminStats();
 }
-
+function startEditArticle(id){
+  const a=state.articles.find(x=>x.id===id);
+  if(!a)return;
+  document.getElementById('art-edit-id').value=id;
+  document.getElementById('art-name').value=a.name;
+  document.getElementById('art-cat').value=a.cat;
+  document.getElementById('art-unit').value=a.unit;
+  document.getElementById('art-desc').value=a.desc||'';
+  document.getElementById('art-form-title').textContent="Modifier l'Article";
+  document.getElementById('art-form-icon').textContent='✏️';
+  document.getElementById('art-submit-btn').innerHTML='💾 Enregistrer les modifications';
+  document.getElementById('art-submit-btn').className='btn btn-warning';
+  document.getElementById('art-cancel-btn').style.display='';
+  document.getElementById('art-form-card').scrollIntoView({behavior:'smooth'});
+}
+function cancelEditArticle(){
+  document.getElementById('art-edit-id').value='';
+  ['art-name','art-unit','art-desc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('art-form-title').textContent='Ajouter un Article';
+  document.getElementById('art-form-icon').textContent='➕';
+  document.getElementById('art-submit-btn').innerHTML='➕ Ajouter l\'article';
+  document.getElementById('art-submit-btn').className='btn btn-primary';
+  document.getElementById('art-cancel-btn').style.display='none';
+}
 function deleteArticle(id){
-  if(!confirm('Supprimer cet article ?')) return;
-  state.articles = state.articles.filter(a=>a.id!==id);
-  save(); renderArticlesAdmin(); renderAdminStats();
+  if(!confirm('Supprimer cet article ?'))return;
+  state.articles=state.articles.filter(a=>a.id!==id);
+  save();renderArticlesAdmin();renderAdminStats();
 }
-
 function renderArticlesAdmin(){
-  const q = (document.getElementById('art-search')?.value||'').toLowerCase();
-  const arts = state.articles.filter(a=>!q||a.name.toLowerCase().includes(q)||a.cat.toLowerCase().includes(q));
-  const tbody = document.getElementById('admin-art-tbody');
-  const empty = document.getElementById('admin-art-empty');
-  if(!arts.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  const q =( document.getElementById('art-search')?.value||'').toLowerCase();
+  const fc=document.getElementById('art-filter-cat')?.value||'';
+  const arts=state.articles.filter(a=>(!q||a.name.toLowerCase().includes(q)||a.cat.toLowerCase().includes(q))&&(!fc||a.cat===fc));
+  const tbody=document.getElementById('admin-art-tbody');
+  const empty=document.getElementById('admin-art-empty');
+  if(!arts.length){tbody.innerHTML='';empty.style.display='';return;}
   empty.style.display='none';
-  const catIcon={'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤','Autre':'📌'};
-  tbody.innerHTML = arts.map((a,i)=>`
+  tbody.innerHTML=arts.map((a,i)=>`
     <tr>
       <td><span style="font-size:12px;color:var(--text3)">${i+1}</span></td>
       <td><strong>${a.name}</strong></td>
-      <td><span class="badge badge-primary">${catIcon[a.cat]||'📌'} ${a.cat}</span></td>
+      <td><span class="badge ${CATBADGE[a.cat]||'badge-primary'}">${CATICONS[a.cat]||'📌'} ${a.cat}</span></td>
       <td>${a.unit}</td>
       <td style="color:var(--text2);font-size:13px">${a.desc||'—'}</td>
-      <td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-warning btn-sm" onclick="startEditArticle(${a.id})" style="margin-right:6px">✏️ Modifier</button>
         <button class="btn btn-danger btn-sm" onclick="deleteArticle(${a.id})">🗑️ Supprimer</button>
       </td>
     </tr>`).join('');
 }
-
 function renderAdminStats(){
-  const total = state.articles.length;
-  const totalDem = state.demandes.length;
-  const mcsWithDem = [...new Set(state.demandes.map(d=>d.mc))].length;
-  document.getElementById('admin-stats').innerHTML = `
-    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📦</div><div><div class="stat-label">Articles disponibles</div><div class="stat-value">${total}</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#fdf3e3">📋</div><div><div class="stat-label">Demandes reçues</div><div class="stat-value">${totalDem}</div></div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:#e8f5e9">🏛️</div><div><div class="stat-label">MC ayant soumis</div><div class="stat-value">${mcsWithDem}/4</div></div></div>
+  const total  =state.articles.length;
+  const dessin =state.articles.filter(a=>a.cat.includes('Dessin')).length;
+  const theatre=state.articles.filter(a=>a.cat.includes('Théâtre')).length;
+  const sugPend=state.suggestions.filter(s=>s.status==='pending').length;
+  document.getElementById('admin-stats').innerHTML=`
+    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📦</div><div><div class="stat-label">Total Articles</div><div class="stat-value">${total}</div></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#fce4ec">🖌️</div><div><div class="stat-label">Atelier Dessin</div><div class="stat-value">${dessin}</div></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#ede7f6">🎭</div><div><div class="stat-label">Club Théâtre</div><div class="stat-value">${theatre}</div></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#fff8e1">💡</div><div><div class="stat-label">Suggestions en attente</div><div class="stat-value">${sugPend}</div></div></div>
   `;
 }
 
-// ─── Demandes Admin ───
+// — Demandes admin —
 function renderDemandes(){
-  const filter = document.getElementById('dem-filter')?.value||'';
-  const dems = state.demandes.filter(d=>!filter||d.mc===filter);
-  const tbody = document.getElementById('admin-dem-tbody');
-  const empty = document.getElementById('admin-dem-empty');
-  if(!dems.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  const filter=document.getElementById('dem-filter')?.value||'';
+  const dems=state.demandes.filter(d=>!filter||d.mc===filter);
+  const tbody=document.getElementById('admin-dem-tbody');
+  const empty=document.getElementById('admin-dem-empty');
+  if(!dems.length){tbody.innerHTML='';empty.style.display='';return;}
   empty.style.display='none';
+  const map={};
+  dems.forEach(d=>{
+    if(!map[d.article])map[d.article]={article:d.article,cat:d.cat||'—',unit:d.unit||'',totalQty:0,mcs:[],quals:[]};
+    map[d.article].totalQty+=Number(d.qty);
+    if(!map[d.article].mcs.includes(d.mc))map[d.article].mcs.push(d.mc);
+    if(d.qual&&!map[d.article].quals.includes(d.qual))map[d.article].quals.push(d.qual);
+  });
+  const rows=Object.values(map);
   const mcBadge={'MC Kébili':'badge-primary','MC Douz':'badge-accent','MC Souk Lahad':'badge-success','MC Faouar':'badge-warning'};
-  tbody.innerHTML = dems.map((d,i)=>`
+  tbody.innerHTML=rows.map((r,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td><span class="badge ${mcBadge[d.mc]||'badge-primary'}">🏛️ ${d.mc}</span></td>
-      <td><strong>${d.article}</strong></td>
-      <td><strong>${d.qty}</strong> ${d.unit||''}</td>
-      <td>${qualBadge(d.qual)}</td>
-      <td style="font-size:12px;color:var(--text3)">${fmtDate(d.ts)}</td>
+      <td><strong style="font-size:15px">${r.article}</strong><br/>
+        <span class="badge ${CATBADGE[r.cat]||'badge-primary'}" style="font-size:11px;margin-top:3px">${CATICONS[r.cat]||'📌'} ${r.cat}</span>
+      </td>
+      <td><span style="font-size:22px;font-weight:700;color:var(--primary)">${r.totalQty}</span>
+          <span style="font-size:13px;color:var(--text2);margin-left:4px">${r.unit}</span></td>
+      <td>${r.quals.map(q=>qualBadge(q)).join(' ')}</td>
+      <td>${r.mcs.map(m=>`<span class="badge ${mcBadge[m]||'badge-primary'}" style="margin:2px;font-size:11px">🏛️ ${m}</span>`).join('')}</td>
       <td><span class="badge badge-success">✅ Reçue</span></td>
     </tr>`).join('');
+  const grand=rows.reduce((s,r)=>s+r.totalQty,0);
+  tbody.innerHTML+=`<tr style="background:var(--primary-light);border-top:2px solid var(--primary)">
+    <td colspan="2" style="font-weight:700;color:var(--primary-dark);padding:12px 16px">📊 TOTAL — ${rows.length} article(s) distincts</td>
+    <td><span style="font-size:20px;font-weight:700;color:var(--primary)">${grand}</span> <span style="font-size:12px;color:var(--text2)">unités</span></td>
+    <td colspan="3"></td>
+  </tr>`;
 }
-
 function renderDemStats(){
-  const total = state.demandes.length;
-  const byMC = {};
-  MCS.forEach(m=>{ byMC[m]=state.demandes.filter(d=>d.mc===m).length; });
-  document.getElementById('dem-stats').innerHTML = `
-    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📋</div><div><div class="stat-label">Total demandes</div><div class="stat-value">${total}</div></div></div>
+  const total=state.demandes.length;
+  const byMC={};
+  MCS.forEach(m=>{byMC[m]=state.demandes.filter(d=>d.mc===m).length;});
+  document.getElementById('dem-stats').innerHTML=`
+    <div class="stat-card"><div class="stat-icon" style="background:#eaf3f5">📋</div><div><div class="stat-label">Total lignes</div><div class="stat-value">${total}</div></div></div>
     ${MCS.map(m=>`<div class="stat-card"><div class="stat-icon" style="background:#fdf3e3">🏛️</div><div><div class="stat-label">${m}</div><div class="stat-value">${byMC[m]}</div></div></div>`).join('')}
   `;
 }
 
-// ─── Synthèse ───
+// — Suggestions admin —
+function updateSugBadge(){
+  const n=state.suggestions.filter(s=>s.status==='pending').length;
+  const b=document.getElementById('sug-badge');
+  b.style.display=n>0?'':'none';b.textContent=n;
+}
+function renderSuggestionsAdmin(){
+  const list=document.getElementById('sug-list-admin');
+  const pending=state.suggestions.filter(s=>s.status==='pending');
+  const handled=state.suggestions.filter(s=>s.status!=='pending');
+  if(!state.suggestions.length){list.innerHTML='<div class="empty"><div class="empty-icon">💡</div><p>Aucune suggestion reçue.</p></div>';return;}
+  let html='';
+  if(pending.length){
+    html+=`<h3 style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em">⏳ En attente (${pending.length})</h3>`;
+    html+=pending.map(s=>`
+      <div class="suggestion-item">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <span style="font-size:22px">${CATICONS[s.cat]||'📌'}</span>
+          <strong style="font-size:15px;flex:1">${s.name}</strong>
+          <span class="badge badge-accent" style="font-size:11px">🏛️ ${s.mc}</span>
+          <span class="badge ${CATBADGE[s.cat]||'badge-primary'}" style="font-size:11px">${s.cat}</span>
+        </div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:8px">${s.desc||'—'}</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:10px">📅 ${fmtDate(s.ts)} · Unité : ${s.unit||'—'}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-success btn-sm" onclick="acceptSuggestion('${s.id}')">✅ Accepter & Ajouter à la liste</button>
+          <button class="btn btn-danger btn-sm" onclick="rejectSuggestion('${s.id}')">❌ Rejeter</button>
+        </div>
+      </div>`).join('');
+  }
+  if(handled.length){
+    html+=`<h3 style="font-size:13px;font-weight:700;color:var(--text3);margin:20px 0 12px;text-transform:uppercase;letter-spacing:.06em">✔ Traitées (${handled.length})</h3>`;
+    html+=handled.map(s=>`
+      <div style="padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--surface2);display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:18px">${CATICONS[s.cat]||'📌'}</span>
+        <span style="flex:1;font-size:14px;font-weight:600;color:var(--text2)">${s.name}</span>
+        <span class="badge badge-accent" style="font-size:11px">🏛️ ${s.mc}</span>
+        <span class="badge ${s.status==='accepted'?'badge-success':'badge-danger'}">${s.status==='accepted'?'✅ Acceptée':'❌ Rejetée'}</span>
+      </div>`).join('');
+  }
+  list.innerHTML=html;
+}
+function acceptSuggestion(id){
+  const s=state.suggestions.find(x=>x.id===id);
+  if(!s)return;
+  s.status='accepted';
+  if(!state.articles.find(a=>a.name.toLowerCase()===s.name.toLowerCase())){
+    state.articles.push({id:Date.now(),name:s.name,cat:s.cat,unit:s.unit||'Pièce',desc:s.desc});
+  }
+  save();renderSuggestionsAdmin();updateSugBadge();renderAdminStats();
+  showAlert('admin-alert','success',`✅ "${s.name}" a été ajouté à la liste des articles.`);
+  adminTab('articles',document.querySelectorAll('#s-admin .tab')[0]);
+}
+function rejectSuggestion(id){
+  if(!confirm('Rejeter cette suggestion ?'))return;
+  const s=state.suggestions.find(x=>x.id===id);
+  if(s){s.status='rejected';save();renderSuggestionsAdmin();updateSugBadge();}
+}
+
+// — Synthèse —
 function renderSynthese(){
-  document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
-  // Group by article
-  const map = {};
+  document.getElementById('print-date').textContent=new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+  const map={};
   state.demandes.forEach(d=>{
-    if(!map[d.article]) map[d.article]={article:d.article, cat:d.cat||'—', unit:d.unit||'', byMC:{}, quals:[]};
-    map[d.article].byMC[d.mc] = (map[d.article].byMC[d.mc]||0)+Number(d.qty);
-    if(d.qual && !map[d.article].quals.includes(d.qual)) map[d.article].quals.push(d.qual);
+    if(!map[d.article])map[d.article]={article:d.article,cat:d.cat||'—',unit:d.unit||'',byMC:{},quals:[]};
+    map[d.article].byMC[d.mc]=(map[d.article].byMC[d.mc]||0)+Number(d.qty);
+    if(d.qual&&!map[d.article].quals.includes(d.qual))map[d.article].quals.push(d.qual);
   });
-  const rows = Object.values(map);
-  const tbody = document.getElementById('synthese-tbody');
-  const empty = document.getElementById('synthese-empty');
-  if(!rows.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  const rows=Object.values(map);
+  const tbody=document.getElementById('synthese-tbody');
+  const empty=document.getElementById('synthese-empty');
+  if(!rows.length){tbody.innerHTML='';empty.style.display='';return;}
   empty.style.display='none';
-  const catIcon={'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤','Autre':'📌'};
-  tbody.innerHTML = rows.map((r,i)=>{
-    const total = MCS.reduce((s,m)=>s+(r.byMC[m]||0),0);
-    const quals = r.quals.join(', ')||'—';
+  tbody.innerHTML=rows.map((r,i)=>{
+    const total=MCS.reduce((s,m)=>s+(r.byMC[m]||0),0);
     return `<tr>
       <td>${i+1}</td>
       <td><strong>${r.article}</strong></td>
-      <td><span class="badge badge-primary">${catIcon[r.cat]||'📌'} ${r.cat}</span></td>
+      <td><span class="badge ${CATBADGE[r.cat]||'badge-primary'}">${CATICONS[r.cat]||'📌'} ${r.cat}</span></td>
       ${MCS.map(m=>`<td style="text-align:center">${r.byMC[m]?`<strong>${r.byMC[m]}</strong> ${r.unit}`:'—'}</td>`).join('')}
       <td style="text-align:center"><strong style="color:var(--primary)">${total} ${r.unit}</strong></td>
-      <td>${quals}</td>
+      <td>${r.quals.join(', ')||'—'}</td>
     </tr>`;
   }).join('');
 }
+function printSynthese(){renderSynthese();window.print();}
 
-function printSynthese(){
-  renderSynthese();
-  window.print();
-}
-
-// ════════════════════════════════════════
-//  AGENT MC — INIT
-// ════════════════════════════════════════
+// ══════════════════════════
+//  AGENT MC
+// ══════════════════════════
 function initMC(){
-  document.getElementById('mc-topbar-title').textContent = state.mc;
-  document.getElementById('mc-topbar-name').textContent = 'Agent — '+state.mc;
-  document.getElementById('mc-hist-title').textContent = 'Mes Demandes — '+state.mc;
-  mcTab('demande', document.querySelector('#s-mc .tab'));
-  renderMCArtList();
+  document.getElementById('mc-topbar-title').textContent=state.mc;
+  document.getElementById('mc-topbar-name').textContent='Agent — '+state.mc;
+  document.getElementById('mc-hist-title').textContent='Mes Demandes — '+state.mc;
+  mcTab('demande',document.querySelector('#s-mc .tab'));
 }
-
-function mcTab(name, el){
+function mcTab(name,el){
   document.querySelectorAll('#s-mc .tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  ['demande','historique'].forEach(t=>{
-    document.getElementById('mc-tab-'+t).style.display = t===name ? '' : 'none';
+  ['demande','suggestion','historique'].forEach(t=>{
+    document.getElementById('mc-tab-'+t).style.display=t===name?'':'none';
   });
-  if(name==='demande') renderMCArtList();
-  if(name==='historique') renderMCHist();
+  if(name==='demande')   renderMCArtList();
+  if(name==='suggestion')renderMySuggestions();
+  if(name==='historique')renderMCHist();
+}
+
+function getPrevDem(artName){
+  return state.demandes.find(d=>d.mc===state.mc&&d.article===artName)||null;
 }
 
 function renderMCArtList(){
-  const container = document.getElementById('mc-art-list');
-  const noArt = document.getElementById('mc-no-articles');
-  const preview = document.getElementById('mc-demand-preview');
-  if(!state.articles.length){
-    container.innerHTML=''; noArt.style.display=''; preview.style.display='none'; return;
-  }
+  const container=document.getElementById('mc-art-list');
+  const noArt=document.getElementById('mc-no-articles');
+  const preview=document.getElementById('mc-demand-preview');
+  if(!state.articles.length){container.innerHTML='';noArt.style.display='';preview.style.display='none';return;}
   noArt.style.display='none';
-  const qualOpts = ['Très bonne','Bonne','Standard','Économique'].map(q=>`<option value="${q}">${q}</option>`).join('');
-  container.innerHTML = state.articles.map(a=>`
-    <div class="article-check-item" id="wrap-${a.id}" onclick="toggleArt(${a.id},event)">
-      <input type="checkbox" id="chk-${a.id}" onclick="event.stopPropagation();toggleArt(${a.id},event)" />
-      <div style="font-size:22px">${{'Mobilier':'🪑','Équipement':'🔧','Fournitures':'📦','Numérique':'💻','Sonorisation':'🎤'}[a.cat]||'📌'}</div>
-      <div class="article-check-name">${a.name}<br/><span style="font-size:12px;color:var(--text3)">${a.cat} · ${a.unit}</span></div>
-      <div class="article-check-meta" onclick="event.stopPropagation()">
-        <div class="article-check-qty">
-          <span style="font-size:12px;color:var(--text2);font-weight:700">Qté</span>
-          <div class="qty-ctrl">
-            <button class="qty-btn" onclick="chgQty(${a.id},-1)">−</button>
-            <input class="qty-input" type="number" id="qty-${a.id}" value="1" min="1" max="9999"
-              onchange="updatePreview()" onclick="event.stopPropagation()"/>
-            <button class="qty-btn" onclick="chgQty(${a.id},1)">+</button>
+  // Grouper par catégorie
+  const groups={};
+  state.articles.forEach(a=>{if(!groups[a.cat])groups[a.cat]=[];groups[a.cat].push(a);});
+  let html='';
+  Object.entries(groups).forEach(([cat,arts])=>{
+    html+=`<div class="cat-separator">${CATICONS[cat]||'📌'} ${cat}</div>`;
+    arts.forEach(a=>{
+      const prev=getPrevDem(a.name);
+      html+=`
+      <div class="article-check-item${prev?' already-sent':''}" id="wrap-${a.id}" onclick="toggleArt(${a.id},event)">
+        <input type="checkbox" id="chk-${a.id}" onclick="event.stopPropagation();toggleArt(${a.id},event)"/>
+        <div style="font-size:20px">${CATICONS[a.cat]||'📌'}</div>
+        <div class="article-check-name">
+          ${a.name}
+          <br/><span style="font-size:12px;color:var(--text3)">${a.unit}</span>
+          ${prev?`<br/><span style="font-size:11px;color:var(--warning);font-weight:700">⚠️ Déjà demandé — Qté: ${prev.qty} · Qualité: ${prev.qual}</span>`:''}
+        </div>
+        <div class="article-check-meta" onclick="event.stopPropagation()">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:12px;color:var(--text2);font-weight:700">Qté</span>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="chgQty(${a.id},-1)">−</button>
+              <input class="qty-input" type="number" id="qty-${a.id}" value="${prev?prev.qty:1}" min="1" max="9999" onchange="updatePreview()" onclick="event.stopPropagation()"/>
+              <button class="qty-btn" onclick="chgQty(${a.id},1)">+</button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:12px;color:var(--text2);font-weight:700">Qualité</span>
+            <select id="qual-${a.id}" onclick="event.stopPropagation()" style="padding:5px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;outline:none;background:var(--surface2)">
+              ${['Très bonne','Bonne','Standard','Économique'].map(q=>`<option value="${q}"${prev&&prev.qual===q?' selected':''}>${q}</option>`).join('')}
+            </select>
           </div>
         </div>
-        <div class="article-check-qual">
-          <span style="font-size:12px;color:var(--text2);font-weight:700">Qualité</span>
-          <select id="qual-${a.id}" onclick="event.stopPropagation()"
-            style="padding:5px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;outline:none;background:var(--surface2)">
-            ${qualOpts}
-          </select>
-        </div>
-      </div>
-    </div>`).join('');
-  updatePreview();
-}
-
-function toggleArt(id, e){
-  const chk = document.getElementById('chk-'+id);
-  if(e.target!==chk) chk.checked = !chk.checked;
-  const wrap = document.getElementById('wrap-'+id);
-  wrap.classList.toggle('selected', chk.checked);
-  updatePreview();
-}
-
-function chgQty(id,delta){
-  const inp = document.getElementById('qty-'+id);
-  inp.value = Math.max(1,Number(inp.value)+delta);
-  updatePreview();
-}
-
-function updatePreview(){
-  const selected = state.articles.filter(a=>{
-    const chk = document.getElementById('chk-'+a.id);
-    return chk && chk.checked;
+      </div>`;
+    });
   });
-  const preview = document.getElementById('mc-demand-preview');
-  document.getElementById('mc-selected-count').textContent = selected.length+' article(s)';
-  preview.style.display = selected.length ? '' : 'none';
+  container.innerHTML=html;
+  updatePreview();
 }
 
+function toggleArt(id,e){
+  const chk=document.getElementById('chk-'+id);
+  if(e.target!==chk)chk.checked=!chk.checked;
+  const wrap=document.getElementById('wrap-'+id);
+  if(chk.checked){
+    const art=state.articles.find(a=>a.id===id);
+    if(art){
+      const prev=getPrevDem(art.name);
+      if(prev){
+        // Annuler la coche et ouvrir le modal doublon
+        chk.checked=false;
+        wrap?.classList.remove('selected');
+        openDoublonModal(art,prev);
+        return;
+      }
+    }
+  }
+  wrap?.classList.toggle('selected',chk.checked);
+  updatePreview();
+}
+
+function openDoublonModal(art,dem){
+  _doublonData={artId:art.id,demId:dem.id};
+  document.getElementById('doublon-msg').innerHTML=
+    `⚠️ L'article <strong>"${art.name}"</strong> a déjà été demandé avec une quantité de <strong>${dem.qty} ${art.unit}</strong> et une qualité <strong>${dem.qual}</strong>.`;
+  document.getElementById('doublon-qty').value=dem.qty;
+  document.getElementById('doublon-qual').value=dem.qual;
+  document.getElementById('modal-doublon').style.display='flex';
+}
+function chgDoublonQty(d){
+  const inp=document.getElementById('doublon-qty');
+  inp.value=Math.max(1,Number(inp.value)+d);
+}
+function confirmDoublon(){
+  if(!_doublonData)return;
+  const qty =document.getElementById('doublon-qty').value;
+  const qual=document.getElementById('doublon-qual').value;
+  const dem=state.demandes.find(d=>d.id===_doublonData.demId);
+  if(dem){dem.qty=qty;dem.qual=qual;dem.ts=Date.now();save();}
+  closeModal('modal-doublon');_doublonData=null;
+  showAlert('mc-alert','success','✏️ La demande a été modifiée avec succès.');
+  renderMCArtList();
+}
+function closeModal(id){document.getElementById(id).style.display='none';}
+
+function chgQty(id,d){
+  const inp=document.getElementById('qty-'+id);
+  inp.value=Math.max(1,Number(inp.value)+d);
+  updatePreview();
+}
+function updatePreview(){
+  const sel=state.articles.filter(a=>{const c=document.getElementById('chk-'+a.id);return c&&c.checked;});
+  document.getElementById('mc-selected-count').textContent=sel.length+' article(s)';
+  document.getElementById('mc-demand-preview').style.display=sel.length?'':'none';
+}
 function resetDemande(){
   state.articles.forEach(a=>{
-    const chk = document.getElementById('chk-'+a.id);
-    if(chk){ chk.checked=false; document.getElementById('wrap-'+a.id)?.classList.remove('selected'); }
-    const qty = document.getElementById('qty-'+a.id);
-    if(qty) qty.value=1;
+    const c=document.getElementById('chk-'+a.id);
+    if(c){c.checked=false;document.getElementById('wrap-'+a.id)?.classList.remove('selected');}
+    const q=document.getElementById('qty-'+a.id);if(q)q.value=1;
   });
   updatePreview();
 }
-
 function submitDemande(){
-  const al = document.getElementById('mc-alert');
-  const selected = state.articles.filter(a=>{
-    const chk = document.getElementById('chk-'+a.id);
-    return chk && chk.checked;
-  });
-  if(!selected.length){
-    al.innerHTML='<div class="alert alert-danger">⚠️ Veuillez sélectionner au moins un article.</div>';
-    setTimeout(()=>al.innerHTML='',3000); return;
-  }
-  const ts = Date.now();
-  selected.forEach(a=>{
+  const sel=state.articles.filter(a=>{const c=document.getElementById('chk-'+a.id);return c&&c.checked;});
+  if(!sel.length){showAlert('mc-alert','danger','⚠️ Sélectionnez au moins un article.');return;}
+  const ts=Date.now();
+  sel.forEach(a=>{
+    // Remplacer si déjà existant
+    state.demandes=state.demandes.filter(d=>!(d.mc===state.mc&&d.article===a.name));
     state.demandes.push({
-      id: ts+Math.random(),
-      mc: state.mc,
-      article: a.name,
-      cat: a.cat,
-      unit: a.unit,
-      qty: document.getElementById('qty-'+a.id)?.value||1,
-      qual: document.getElementById('qual-'+a.id)?.value||'Bonne',
-      ts
+      id:ts+Math.random(),mc:state.mc,article:a.name,cat:a.cat,unit:a.unit,
+      qty:document.getElementById('qty-'+a.id)?.value||1,
+      qual:document.getElementById('qual-'+a.id)?.value||'Bonne',ts
     });
   });
   save();
-  al.innerHTML=`<div class="alert alert-success">✅ Demande envoyée avec succès ! (${selected.length} article(s))</div>`;
-  setTimeout(()=>al.innerHTML='',4000);
+  showAlert('mc-alert','success',`✅ Demande envoyée avec succès ! (${sel.length} article(s))`);
   resetDemande();
 }
-
 function renderMCHist(){
-  const dems = state.demandes.filter(d=>d.mc===state.mc);
-  const tbody = document.getElementById('mc-hist-tbody');
-  const empty = document.getElementById('mc-hist-empty');
-  if(!dems.length){ tbody.innerHTML=''; empty.style.display=''; return; }
+  const dems=state.demandes.filter(d=>d.mc===state.mc);
+  const tbody=document.getElementById('mc-hist-tbody');
+  const empty=document.getElementById('mc-hist-empty');
+  if(!dems.length){tbody.innerHTML='';empty.style.display='';return;}
   empty.style.display='none';
-  tbody.innerHTML = [...dems].reverse().map((d,i)=>`
+  tbody.innerHTML=[...dems].reverse().map((d,i)=>`
     <tr>
       <td>${i+1}</td>
-      <td><strong>${d.article}</strong></td>
+      <td><strong>${d.article}</strong><br/>
+        <span class="badge ${CATBADGE[d.cat]||'badge-primary'}" style="font-size:11px;margin-top:3px">${CATICONS[d.cat]||'📌'} ${d.cat}</span>
+      </td>
       <td><strong>${d.qty}</strong> ${d.unit||''}</td>
       <td>${qualBadge(d.qual)}</td>
       <td style="font-size:12px;color:var(--text3)">${fmtDate(d.ts)}</td>
@@ -992,27 +988,78 @@ function renderMCHist(){
     </tr>`).join('');
 }
 
-// ════════════════════════════════════════
-//  UTILS
-// ════════════════════════════════════════
-function qualBadge(q){
-  const map={'Très bonne':'badge-success','Bonne':'badge-primary','Standard':'badge-accent','Économique':'badge-warning'};
-  return `<span class="badge ${map[q]||'badge-primary'}">${q||'—'}</span>`;
+// — Suggestions MC —
+function submitSuggestion(){
+  const name=document.getElementById('sug-name').value.trim();
+  const cat =document.getElementById('sug-cat').value;
+  const unit=document.getElementById('sug-unit').value.trim()||'Pièce';
+  const desc=document.getElementById('sug-desc').value.trim();
+  if(!name){showAlert('mc-sug-alert','danger','⚠️ La désignation est obligatoire.');return;}
+  if(!desc){showAlert('mc-sug-alert','danger','⚠️ La justification est obligatoire.');return;}
+  if(state.articles.find(a=>a.name.toLowerCase()===name.toLowerCase())){
+    showAlert('mc-sug-alert','warning','⚠️ Cet article existe déjà dans la liste officielle ! Rendez-vous sur l\'onglet "Nouvelle Demande".');return;
+  }
+  if(state.suggestions.find(s=>s.mc===state.mc&&s.name.toLowerCase()===name.toLowerCase()&&s.status==='pending')){
+    showAlert('mc-sug-alert','warning','⚠️ Vous avez déjà suggéré cet article. Il est en attente de traitement.');return;
+  }
+  state.suggestions.push({id:'sug_'+Date.now(),mc:state.mc,name,cat,unit,desc,status:'pending',ts:Date.now()});
+  save();
+  ['sug-name','sug-unit','sug-desc'].forEach(id=>document.getElementById(id).value='');
+  showAlert('mc-sug-alert','success','💡 Suggestion envoyée à l\'administrateur CRAC !');
+  renderMySuggestions();
+  updateSugBadge();
 }
-function fmtDate(ts){
-  if(!ts) return '—';
-  return new Date(ts).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+function renderMySuggestions(){
+  const sugs=state.suggestions.filter(s=>s.mc===state.mc);
+  const el=document.getElementById('mc-my-suggestions');
+  if(!sugs.length){el.innerHTML='<div class="empty" style="padding:24px"><div class="empty-icon" style="font-size:32px">💡</div><p>Aucune suggestion envoyée</p></div>';return;}
+  const statusMap={pending:'⏳ En attente',accepted:'✅ Acceptée',rejected:'❌ Rejetée'};
+  const bMap={pending:'badge-warning',accepted:'badge-success',rejected:'badge-danger'};
+  el.innerHTML=[...sugs].reverse().map(s=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--surface2);margin-bottom:8px">
+      <span style="font-size:18px">${CATICONS[s.cat]||'📌'}</span>
+      <div style="flex:1"><strong style="font-size:14px">${s.name}</strong>
+        <br/><span style="font-size:12px;color:var(--text3)">${s.cat} · ${fmtDate(s.ts)}</span>
+      </div>
+      <span class="badge ${bMap[s.status]}">${statusMap[s.status]}</span>
+    </div>`).join('');
 }
 
-// ─── Sample data ───
+// ══════════════════════════
+//  UTILS
+// ══════════════════════════
+function qualBadge(q){
+  const m={'Très bonne':'badge-success','Bonne':'badge-primary','Standard':'badge-accent','Économique':'badge-warning'};
+  return `<span class="badge ${m[q]||'badge-primary'}">${q||'—'}</span>`;
+}
+function fmtDate(ts){
+  if(!ts)return '—';
+  return new Date(ts).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+function showAlert(elId,type,msg){
+  const el=document.getElementById(elId);
+  if(!el)return;
+  el.innerHTML=`<div class="alert alert-${type}">${msg}</div>`;
+  setTimeout(()=>el.innerHTML='',5000);
+}
+
+// ══════════════════════════
+//  SAMPLE DATA
+// ══════════════════════════
 if(!state.articles.length){
-  state.articles = [
-    {id:1,name:'Tables',cat:'Mobilier',unit:'Pièce',desc:'Tables en bois standard'},
-    {id:2,name:'Chaises',cat:'Mobilier',unit:'Pièce',desc:'Chaises pliantes'},
-    {id:3,name:'Microphones',cat:'Sonorisation',unit:'Pièce',desc:'Microphone dynamique'},
-    {id:4,name:'Ordinateurs portables',cat:'Numérique',unit:'Pièce',desc:'Laptop 15"'},
-    {id:5,name:'Climatiseurs',cat:'Équipement',unit:'Unité',desc:'Split 24000 BTU'},
-    {id:6,name:'Rames de papier A4',cat:'Fournitures',unit:'Rame',desc:'80g/m²'},
+  state.articles=[
+    {id:1,name:'Pinceaux',cat:'Fournitures Dessin',unit:'Pièce',desc:'Pinceaux fins et moyens, poil synthétique'},
+    {id:2,name:'Papier Canson A3',cat:'Fournitures Dessin',unit:'Feuille',desc:'Papier dessin 180g/m²'},
+    {id:3,name:'Chevalet de table',cat:'Fournitures Dessin',unit:'Pièce',desc:'Chevalet bois réglable'},
+    {id:4,name:'Crayons de couleur',cat:'Consommables Dessin',unit:'Boîte',desc:'Boîte 24 couleurs'},
+    {id:5,name:'Peinture acrylique',cat:'Consommables Dessin',unit:'Flacon',desc:'Flacon 100ml toutes couleurs'},
+    {id:6,name:'Encre de Chine',cat:'Consommables Dessin',unit:'Flacon',desc:'Flacon 30ml noir'},
+    {id:7,name:'Colle blanche',cat:'Consommables Dessin',unit:'Flacon',desc:'Flacon 250ml'},
+    {id:8,name:'Spots d\'éclairage scène',cat:'Fournitures Théâtre',unit:'Pièce',desc:'Spot PAR 56 LED'},
+    {id:9,name:'Micros de scène',cat:'Fournitures Théâtre',unit:'Pièce',desc:'Microphone cardioïde'},
+    {id:10,name:'Maquillage de scène',cat:'Consommables Théâtre',unit:'Kit',desc:'Kit 12 couleurs scène'},
+    {id:11,name:'Papier kraft décor',cat:'Consommables Théâtre',unit:'Rouleau',desc:'Rouleau 10m kraft brun'},
+    {id:12,name:'Tissu décor scène',cat:'Consommables Théâtre',unit:'Mètre',desc:'Tissu noir non-tissé'},
   ];
   save();
 }
